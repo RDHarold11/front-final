@@ -1,13 +1,16 @@
 #Login-window {
     background-color: white;
     width: 90vw;
-    height: 90vh;
+    min-height: 90vh;
 
     box-shadow: #888 3px 3px 7px;
     border-radius: 5px;
 
     margin-left: 5vw;
     margin-top: 5vh;
+
+    box-sizing: border-box;
+    padding: 15px;
 
 
 }

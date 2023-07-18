@@ -14,7 +14,10 @@ function Login() {
         <div id="Login-window" className="d-flex flex-wrap justify-content-center align-items-md-center">
             {/* Formulario */}
             <div className="" id="img-form">
-
+                <img src="https://images.pexels.com/photos/162622/facebook-login-office-laptop-business-162622.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                    alt="login"
+                    className="w-100"
+                />
             </div>
             <form action="#" onSubmit={enviar} id="form-login" className="d-flex flex-column align-items-center p-2">
 
