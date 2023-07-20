@@ -1,0 +1,48 @@
+#Login-window {
+    background-color: white;
+    width: 90vw;
+    min-height: 90vh;
+
+    box-shadow: #888 3px 3px 7px;
+    border-radius: 5px;
+
+    margin-left: 5vw;
+    margin-top: 5vh;
+
+    box-sizing: border-box;
+    padding: 15px;
+
+
+}
+
+#img-form {
+    width: 100%;
+    height: 50%;
+}
+
+@media only screen and (min-width: 768px) {
+    #img-form {
+        width: 50%;
+        height: 100%;
+    }
+}
+
+#form-login {
+    width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    #form-login {
+        width: 50%;
+    }
+}
+
+#form-login > div {
+    width: 75%;
+}
+
+@media only screen and (min-width: 768px) {
+    #form-login > div {
+        width: 50%;
+    }
+}
