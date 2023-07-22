@@ -1,11 +1,12 @@
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import Login from './pages/login/login'
-import NotFound from './pages/notFound/notFound'
+import Login from './pages/login/login';
+import NotFound from './pages/notFound/notFound';
+import Inicio from './pages/start/start';
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: '/', element: <Login/>
+      path: '/', element: <Inicio/>
     },
     {
       path: '*', element: <NotFound/>
