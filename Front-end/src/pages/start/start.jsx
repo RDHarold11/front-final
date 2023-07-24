@@ -9,7 +9,7 @@ function Inicio() {
         <>
         {/* <Navbar></Navbar> */}
         {/* <Recientes></Recientes> */}
-        <AnunciosContainer></AnunciosContainer>
+        <AnunciosContainer></AnunciosContainer> 
         <CardContainer></CardContainer>
         {/* <Mision></Mision> */}
         </>
