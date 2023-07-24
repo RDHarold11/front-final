@@ -6,7 +6,7 @@ section {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 580px 1fr;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -19,6 +19,7 @@ img {
 .first__section {
   margin-bottom: 30px;
 }
+
 .first__section p {
   margin: 15px 0;
 }
