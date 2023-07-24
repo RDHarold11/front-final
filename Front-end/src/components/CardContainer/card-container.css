@@ -1,0 +1,23 @@
+.card-container {
+  width: 80vw;
+  margin: 0 auto;
+  padding: 20px 40px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.cards {
+}
+
+h2 {
+  font-size: 18px !important;
+}
+
+h2::before {
+  content: "";
+  border: 2px solid #333;
+  margin-right: 4px;
+}
