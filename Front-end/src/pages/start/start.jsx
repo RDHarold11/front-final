@@ -8,7 +8,7 @@ function Inicio() {
     return (
         <>
         {/* <Navbar></Navbar> */}
-        {/* <Recientes></Recientes> */}
+        <Recientes></Recientes>
         <AnunciosContainer></AnunciosContainer>
         <CardContainer></CardContainer>
         {/* <Mision></Mision> */}
