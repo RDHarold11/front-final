@@ -4,7 +4,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import './Mision,Vision,Filo.css'
-
+import Mision from "./images/Mision.jpg"
+import Vision from "./images/Vision.jpg"
+import Filosofia from "./images/Filosofia.jpg"
 
 
 export default function ImgMediaCard() {
@@ -15,7 +17,7 @@ export default function ImgMediaCard() {
           component="img"
           alt="Mision"
           height="140"
-          image="/images/Mision.jpg"
+          image={Mision}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -33,7 +35,7 @@ export default function ImgMediaCard() {
             component="img"
             alt="Vision"
             height="140"
-            image="Front-end/src/components/MisionVisionFilosofia/images/Vision.jpg"
+            image={Vision}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
@@ -51,7 +53,7 @@ export default function ImgMediaCard() {
             component="img"
             alt="Filosofia"
             height="140"
-            image="/images/Filosofia.jpg"
+            image={Filosofia}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
