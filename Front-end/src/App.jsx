@@ -7,7 +7,6 @@ import Inicio from './pages/start/start';
 function App() {
 
   return (
-    
     <>
     <BrowserRouter>
     <Routes>
