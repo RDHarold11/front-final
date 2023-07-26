@@ -9,7 +9,7 @@ import ContactUs from "../../components/contact us component/contactUs";
 function Inicio() {
     return (
         <>
-        {/* <Navbar></Navbar> */}
+        <Navbar/>
         <Recientes/>
         <AnunciosContainer/>
         <CardContainer/>

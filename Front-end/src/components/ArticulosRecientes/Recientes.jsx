@@ -3,7 +3,8 @@ import "./recientes.css";
 
 const Recientes = () => {
   return (
-    <main>
+    <main className="recentsContainer">
+      <h1 className="titulo">RECIENTES</h1>
       <section>
         <div>
           <img
