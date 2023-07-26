@@ -28,24 +28,24 @@ const Navbar = () => {
 			<div className="collapse navbar-collapse p-2" id="navbarSupportedContent">
 				<ul className="navbar-nav">
 					<li className="nav-item ms-auto">
-						<a className="nav-link" href="">
+						<a className="nav-links" href="">
 							Inicio
 						</a>
 					</li>
 					<li className="nav-item mx-auto">
-						<a className="nav-link" href="">
+						<a className="nav-links" href="">
 							Eventos
 						</a>
 					</li>
 					<li className="nav-item">
-						<a className="nav-link" href="">
+						<a className="nav-links" href="">
 							Anuncios
 						</a>
 					</li>
 				</ul>
 			</div>
 			<div className="d-flex">
-				<button type="submit" className="btn btn-primary">
+				<button type="submit" className="btn ">
 					Iniciar seccion
 				</button>
 			</div>

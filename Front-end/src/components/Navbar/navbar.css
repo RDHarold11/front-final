@@ -2,11 +2,14 @@
     margin: 10px;
     border-radius: 15px;
 }
-.nav-link{
+.nav-links{
     transition: all 0.5s;
     border-radius: 10px;
+    margin: 0px 3px 0px 3px;
+    padding: 10px;
+    color: white;
 }
-.nav-link:hover{
+.nav-links:hover{
     margin: 0px 10px 0px 10px;
     background: white;
     color: black;
@@ -14,12 +17,13 @@
 }
 .btn{
     border-style: none;
-    background-color: rgb(112, 112, 112);
-    transition: all 0.5s;
+    background-color: rgb(112, 112, 112) !important;
+    transition: all 0.5s !important;
+    color: white;
 }
 
 .btn:hover{
-    color: rgb(238, 238, 238);
+    color: rgb(238, 238, 238) !important;
     background-color: transparent;
     font-size: 19px;
 }
