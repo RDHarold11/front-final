@@ -8,13 +8,8 @@ function Inicio() {
     return (
         <>
         {/* <Navbar></Navbar> */}
-<<<<<<< HEAD
-        {/* <Recientes></Recientes> */}
-        <AnunciosContainer></AnunciosContainer> 
-=======
         <Recientes></Recientes>
         <AnunciosContainer></AnunciosContainer>
->>>>>>> 20c87b317bee7f5a363535707442a30e7aff6c76
         <CardContainer></CardContainer>
         {/* <Mision></Mision> */}
         </>
