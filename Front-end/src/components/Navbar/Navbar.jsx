@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="collapse navbar-collapse p-2" id="navbarSupportedContent">
         <ul className="navbar-nav">
           <li className="nav-item ms-auto">
-            <a className="nav-links" href="">
+            <a className="nav-links" href="/">
               Inicio
             </a>
           </li>
