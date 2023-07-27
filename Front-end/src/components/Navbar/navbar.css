@@ -1,29 +1,29 @@
-.navbar{
-    margin: 10px;
-    border-radius: 15px;
+.navbar {
+  margin: 10px;
+  border-radius: 15px;
 }
-.nav-links{
-    transition: all 0.5s;
-    border-radius: 10px;
-    margin: 0px 3px 0px 3px;
-    padding: 10px;
-    color: white;
+.nav-links {
+  transition: all 0.5s;
+  border-radius: 10px;
+  margin: 0px 3px 0px 3px;
+  padding: 10px;
+  color: white;
 }
-.nav-links:hover{
-    margin: 0px 10px 0px 10px;
-    background: white;
-    color: black;
-    border-radius: 10px;
+.nav-links:hover {
+  margin: 0px 10px 0px 10px;
+  background: white;
+  color: black;
+  border-radius: 10px;
 }
-.btn{
-    border-style: none;
-    background-color: rgb(112, 112, 112) !important;
-    transition: all 0.5s !important;
-    color: white;
+.btn {
+  border-style: none;
+  background-color: rgb(112, 112, 112) !important;
+  transition: all 0.5s !important;
+  color: white;
 }
 
-.btn:hover{
-    color: rgb(238, 238, 238) !important;
-    background-color: transparent;
-    font-size: 19px;
+.btn:hover {
+  color: rgb(238, 238, 238) !important;
+  background-color: transparent;
+  font-size: 19px;
 }
