@@ -11,7 +11,7 @@ const Navbar = () => {
         height="50"
         className="d-inline-block align-text-top p-1"
       />
-      <a className="navbar-brand" href="">
+      <a className="navbar-brand" href="/">
         Escuela Prueba
       </a>
       <button

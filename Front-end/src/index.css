@@ -94,7 +94,7 @@ button:focus-visible {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--bs-dark);
-  border-radius: 3px;
+  border-radius: 3px ;
 }
 
 /* Handle on hover */

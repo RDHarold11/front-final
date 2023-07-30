@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './admin-articles-viewer.css';
 
 
@@ -33,9 +34,9 @@ export default function AdminArticleViewer() {
                                 <td key={articulo.key} >{articulo.id}</td>
                                 <td key={articulo.key} >{articulo.titulo}</td>
                                 <td key={articulo.key} >{articulo.descripcion + ` ${articulo.descripcion.length - 2}`}</td>
-                                <td key={articulo.key} ><a href={`/detalles/${articulo.id}`} className='btn btn-primary d-block mx-auto'>Visualizar</a></td>
-                                <td key={articulo.key} ><a href="#" className='w-100 btn btn-primary'>Editar</a></td> 
-                                <td key={articulo.key} ><a href="#" className='w-100 btn btn-primary'>Eliminar</a></td> 
+                                <td key={articulo.key} ><Link to={`/detalles/${articulo.id}`} className='btn btn-primary d-block mx-auto'>Visualizar</Link></td>
+                                <td key={articulo.key} ><Link to="#" className='w-100 btn btn-primary'>Editar</Link></td> 
+                                <td key={articulo.key} ><button className='w-100 btn btn-primary'>Eliminar</button></td> 
                             </tr>
                         ))}
                     </tbody>

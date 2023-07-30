@@ -5,6 +5,8 @@ import Inicio from "./pages/start/start";
 import Articulo from "./pages/UnicoArticulo/Articulo";
 import PanelAdmin from "./pages/panel/panel";
 
+import Navbar from "./components/Navbar/Navbar";
+
 function App() {
   return (
     <>
