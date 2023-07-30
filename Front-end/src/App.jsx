@@ -3,6 +3,7 @@ import Login from "./pages/login/login";
 import NotFound from "./pages/notFound/notFound";
 import Inicio from "./pages/start/start";
 import Articulo from "./pages/UnicoArticulo/Articulo";
+import PanelAdmin from "./pages/panel/panel";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="*" element={<NotFound/>} exact />
           <Route path="/login" element={<Login/>} exact />
           <Route path="/detalles/:id" element={<Articulo/>} exact />
+          <Route path="/panel" element={<PanelAdmin/>} exact />
         </Routes>
       </BrowserRouter>
     </>

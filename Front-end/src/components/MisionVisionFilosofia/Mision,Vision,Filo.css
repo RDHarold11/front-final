@@ -1,12 +1,13 @@
+/* MVV = MISION, VISION, VALORES */
 
-.card-container {
+.MVVCard-container {
     display: flex;
     flex-wrap: wrap; 
     justify-content: space-between; 
   }
   
  
-  .card {
+  .MVVCard { 
     flex: 1; 
     margin: 10px; 
   }

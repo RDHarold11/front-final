@@ -11,8 +11,8 @@ import Filosofia from "./images/Filosofia.jpg"
 
 export default function ImgMediaCard() {
   return (
-    <div className='card-container'>
-      <Card className='card' sx={{ maxWidth: 345 }}>
+    <div className='MVVCard-container'>
+      <Card className='MVVCard' sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
           alt="Mision"
@@ -30,7 +30,7 @@ export default function ImgMediaCard() {
         </CardContent>
       </Card>
 
-      <Card className='card' sx={{ maxWidth: 345 }}>
+      <Card className='MVVCard' sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
             alt="Vision"
@@ -48,7 +48,7 @@ export default function ImgMediaCard() {
           </CardContent>
         </Card>
 
-      <Card className='card' sx={{ maxWidth: 345 }}>
+      <Card className='MVVCard' sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
             alt="Filosofia"

@@ -18,21 +18,21 @@ function CardContainer({ title = "Últimos eventos" }) {
       content: relleno,
       imageUrl:
         "https://img.freepik.com/vector-gratis/ilustracion-concepto-escuela-secundaria_114360-8329.jpg?size=626&ext=jpg&ga=GA1.1.2061922915.1687553520&semt=ais",
-      cardId: Math.random() * 10,
+      cardId: Math.random() * 1010,
     },
     {
       title: "Prueba#3",
       content: relleno,
       imageUrl:
         "https://img.freepik.com/vector-gratis/edificio-universitario-banner-institucion-educativa_1441-3616.jpg?size=626&ext=jpg&ga=GA1.1.2061922915.1687553520&semt=ais",
-      cardId: Math.random() * 10,
+      cardId: Math.random() * 10100,
     },
     {
       title: "Prueba#4",
       content: "Limpieza general de las aulas de clases",
       imageUrl:
         "https://img.freepik.com/vector-gratis/aula-vacia-interior-escuela-o-clase-universitaria_107791-631.jpg?size=626&ext=jpg&ga=GA1.1.2061922915.1687553520&semt=ais",
-      cardId: Math.random() * 10,
+      cardId: Math.random() * 101000,
     },
   ];
   return (
@@ -44,15 +44,16 @@ function CardContainer({ title = "Últimos eventos" }) {
             <p>No hay eventos agregados</p>
           ) : (
             datos.map((dato) => (
-              <>
+
                 <Card
                   title={dato.title}
                   content={dato.content}
                   imageUrl={dato.imageUrl}
                   cardId={dato.cardId}
+                  key={dato.cardId}
                 />
-              </>
-            ))
+              )
+            )
           )}
         </div>
       </div>

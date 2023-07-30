@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Card({ title, content, imageUrl, cardId }) {
   return (
-    <>
-      <div className="card m-1" key={cardId}>
+      <div className="card m-1">
         <img
           src={imageUrl}
           className="card-img-top"
@@ -21,6 +20,5 @@ export default function Card({ title, content, imageUrl, cardId }) {
           </Link>
         </div>
       </div>
-    </>
   );
 }
