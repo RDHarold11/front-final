@@ -8,8 +8,9 @@ const PORT = process.env.PORT || 5500;
 dotenv.config();
 
 import usuarioRoutes from "../server/routes/usuarioRoutes.js";
+import articleRoutes from "../server/routes/articuloRutas.js";
 
-//Llamar la conexcion a la bd aqui
+//Llamar la conexion a la bd aqui
 
 const uri = process.env.DATABASE_URL;
 
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/users", usuarioRoutes);
+app.use("/api/articles", articleRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);

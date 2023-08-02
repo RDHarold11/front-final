@@ -1,8 +1,8 @@
-import { Router } from "express"
+import { Router } from "express";
 const router = Router();
-import controladorUser from "../controladores/controladorArticulo";
-import protect from "../middleware/authMiddleware";
+import controlador from "../controladores/controladorArticulo.js";
+import protect from "../middleware/authMiddleware.js";
 
-router.route("/Articulos").post(protect, controladorUser.postArticle)
+router.route("/").post(protect, controlador.postArticle);
 
 export default router;

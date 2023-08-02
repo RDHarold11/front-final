@@ -2,18 +2,9 @@ import Articulo from "../modelos/articulosModelo.js";
 import asyncHandler from "express-async-handler";
 
 const postArticle = asyncHandler(async (req, res) => {
+  const { titulo, descripcionBreve, descripcion, imagen, categoria } = req.body;
 
-  const { user, titulo, descripcionBreve, descripcion, imagen, categoria } =
-    req.body;
-
-  if (
-    !user ||
-    !titulo ||
-    !descripcionBreve ||
-    !descripcion ||
-    !imagen ||
-    !categoria
-  ) {
+  if (!titulo || !descripcionBreve || !descripcion || !imagen || !categoria) {
     res.status(400).json({ msg: "error al ingresar articulo" });
   }
 
