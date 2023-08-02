@@ -2,6 +2,7 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const user = true;
   return (
     <nav className="navbar bg-dark navbar-expand-lg navbar-dark px-3">
       <img
@@ -45,9 +46,20 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="d-flex">
-        <button type="submit" className="btn ">
-          <Link to="/login">Ingresar</Link>
-        </button>
+        {user ? (
+          <>
+            <button>
+              <Link to="panel">Panel</Link>
+            </button>
+            <button>
+              <Link to="/">Logout</Link>
+            </button>
+          </>
+        ) : (
+          <button type="submit" className="btn ">
+            <Link to="/login">Ingresar</Link>
+          </button>
+        )}
       </div>
     </nav>
   );
