@@ -2,6 +2,7 @@ import Usuario from "../modelos/usuarioModelo.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
+import Articulo from "../modelos/articulosModelo.js";
 
 //Para generar el token
 const generateToken = (id) => {
@@ -24,8 +25,37 @@ const loginUser = asyncHandler(async (req, res) => {
   res.status(400).json({ msg: "Invalid credentials" });
 });
 
+const postArticle = asyncHandler(async(req,res)=>{
+
+  const {
+    user,
+    titulo,
+    descripcionBreve,
+    descripcion,
+    imagen,
+    categoria
+  } = req.body
+    if(!user||!titulo||!descripcionBreve||!descripcion||!imagen||!categoria){
+      res.status(400).json({msg: "error al ingresar articulo"})
+    }
+
+  const article = await Articulo.create({
+    user: req.user.id,
+    titulo,
+    descripcionBreve,
+    descripcion,
+    imagen,
+    categoria
+
+  });
+  res.status(200).json(article);
+})
+
+
 const controlador = {
   loginUser,
+  postArticle
+
 };
 
 export default controlador;
