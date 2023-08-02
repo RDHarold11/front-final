@@ -14,7 +14,6 @@ import usuarioRoutes from "../server/routes/usuarioRoutes.js";
 const uri = process.env.DATABASE_URL;
 
 async function connect() {
-
   try {
     await mongoose.connect(uri);
     console.log("Connected to MongoDB");
@@ -26,9 +25,8 @@ async function connect() {
 connect();
 
 app.use(cors());
-app.use(express.urlencoded({ extended: false }));
-
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/users", usuarioRoutes);
 
