@@ -48,7 +48,7 @@ const Navbar = () => {
       <div className="d-flex">
         {user ? (
           <>
-            <button>
+            <button className="mx-2">
               <Link to="panel">Panel</Link>
             </button>
             <button>

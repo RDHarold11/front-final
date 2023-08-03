@@ -3,7 +3,7 @@ import './footer.css'
 
 const Footer =()=>{
     return(
-        <div className="footer">
+        <footer className="footer">
             <div className="footerOptions">
                 <p>INICIO</p>
                 <p>|</p>
@@ -19,7 +19,7 @@ const Footer =()=>{
                 <p>Lorem ipsum dolor sit amet consectetur.</p>
                 <p>© 2023 school admin. Todos los derechos reservados</p>
             </div>
-        </div>
+        </footer>
     )
 }
 export default Footer;

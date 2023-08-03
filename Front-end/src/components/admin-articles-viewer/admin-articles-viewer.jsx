@@ -1,8 +1,53 @@
 import { Link } from "react-router-dom";
 import "./admin-articles-viewer.css";
 
-export default function AdminArticleViewer() {
+export default function AdminArticleViewer({className}) {
   let datos = [
+    {
+      id: Math.floor(Math.random() * 10),
+      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
+      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
+    },
+    {
+      id: Math.floor(Math.random() * 10),
+      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
+      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
+    },
+    {
+      id: Math.floor(Math.random() * 10),
+      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
+      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
+    },
+    {
+      id: Math.floor(Math.random() * 10),
+      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
+      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
+    },
+    {
+      id: Math.floor(Math.random() * 10),
+      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
+      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
+    },
+    {
+      id: Math.floor(Math.random() * 10),
+      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
+      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
+    },
+    {
+      id: Math.floor(Math.random() * 10),
+      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
+      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
+    },
+    {
+      id: Math.floor(Math.random() * 10),
+      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
+      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
+    },
+    {
+      id: Math.floor(Math.random() * 10),
+      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
+      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
+    },
     {
       id: Math.floor(Math.random() * 10),
       titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
@@ -16,7 +61,7 @@ export default function AdminArticleViewer() {
   ];
 
   return (
-    <div className="w-100 p-2 adminViewerContainer">
+    <div className={"adminViewerContainer " + className}>
       <table className="table adminViewer">
         <thead className="table-dark">
           <tr>

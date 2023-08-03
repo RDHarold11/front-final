@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import "./articuloForm.css";
+
+
+
 const ArticuloForm = () => {
   const [titulo, setTitulo] = useState('');
   const [breveDescripcion, setBreveDescripcion] = useState('');
@@ -16,7 +19,7 @@ const ArticuloForm = () => {
   ];
 
   return (
-    <form>
+    <form className='articuloForm'>
       <div>
         <label>Título:</label>
         <input type="text" value={titulo} onChange={(e) => setTitulo(e.target.value)} />

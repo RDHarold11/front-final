@@ -8,14 +8,14 @@ height: 300px;
 margin-top: 40px;
 }
 
-.footerOptions{
+.footerOptions {
+    max-width: 768px;
+    width: 100%;
     display: flex;
+    justify-content: space-around;
     margin-bottom: 40px;
 }
 
-.footerOptions p{
-    margin: 0px 16px 0px 16px;
-}
 .directionsCopyright{
     display: flex;
     justify-content: center;
