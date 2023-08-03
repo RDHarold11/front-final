@@ -23,11 +23,11 @@ const deleteArticles = asyncHandler(async(req,res)=>
 {
   const article = await Articulo.findById(req.params.id)
 
-  if (!article) {
-    res.status(400).json({msg: `No articles with id: ${req.params.id}`})
-  }
   if (!req.user) {
     res.status(400).json({msg: `no user find`})
+  }
+  if (!article) {
+    res.status(400).json({msg: `No articles with id: ${req.params.id}`})
   }
   if (article.user.toString() == !article.user.id) {
     res.status(400).json({msg: `unauthorized`})
