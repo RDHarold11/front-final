@@ -1,8 +1,9 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const user = true;
+  const {user} = useSelector((state) => state.auth)
   return (
     <nav className="navbar bg-dark navbar-expand-lg navbar-dark px-3">
       <img

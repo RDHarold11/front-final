@@ -1,11 +1,38 @@
+import { useEffect, useState } from "react";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { login, reset } from "../../features/auth/authSlice";
 
 function Login() {
-  function enviar(e) {
-    e.preventDefault();
-  }
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
+  const { user, isError, isLoading, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onSubmit = (e) => {
+    if (!username || !password) {
+      alert("Campos vacios");
+    } else {
+      const userData = { username, password };
+      dispatch(login(userData));
+    }
+  };
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+    if (user) {
+      navigate("/");
+    }
+    dispatch(reset());
+  }, [user, dispatch, isError]);
   return (
     <>
       <div
@@ -21,8 +48,7 @@ function Login() {
           />
         </div>
         <form
-          action="#"
-          onSubmit={enviar}
+          onSubmit={onSubmit}
           id="form-login"
           className="d-flex flex-column align-items-center p-2"
         >
@@ -32,6 +58,8 @@ function Login() {
             <label className="form-label" htmlFor="userName"></label>
             <input
               type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="form-control"
               id="userName"
               placeholder="Ingrese nombre de usuario"
@@ -42,6 +70,8 @@ function Login() {
             <label className="form-label" htmlFor="contra"></label>
             <input
               type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="form-control"
               id="contra"
               placeholder="Ingrese contraseña"
