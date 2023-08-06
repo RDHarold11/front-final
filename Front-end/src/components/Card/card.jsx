@@ -1,10 +1,9 @@
-import React from "react";
 import "./card.css";
+import { Link } from "react-router-dom";
 
 export default function Card({ title, content, imageUrl, cardId }) {
   return (
-    <>
-      <div className="card m-1" key={cardId}>
+      <div className="card m-1">
         <img
           src={imageUrl}
           className="card-img-top"
@@ -16,11 +15,10 @@ export default function Card({ title, content, imageUrl, cardId }) {
           <p className="card-text" style={{ flexGrow: 2 }}>
             {content}
           </p>
-          <a href="#" className="btn btn-primary">
+          <Link to="detalles/2" className="btn btn-primary">
             Ver más
-          </a>
+          </Link>
         </div>
       </div>
-    </>
   );
 }

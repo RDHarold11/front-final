@@ -1,0 +1,56 @@
+
+.articuloForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .articuloForm > div {
+    width: 100%;
+  }
+  .articuloForm label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .articuloForm input,
+  .articuloForm textarea,
+  .articuloForm select {
+    background-color: white;
+    border: 1px solid rgb(62, 62, 62);
+    border-radius: 5px;
+    height: 40px;
+    width: 100% ;
+    padding: 0 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+
+  .articuloForm textarea {
+    max-height: 100px;
+  }
+
+  input[type="file"] {
+    padding: 0;
+    height: auto;
+  }
+  
+  .articuloForm button {
+    margin-top: 20px;
+    background-color: rgb(62, 62, 62);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+  }
+  

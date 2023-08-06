@@ -4,17 +4,19 @@ import AnunciosContainer from "../../components/CardContainer/AnunciosContainer"
 import Mision from "../../components/MisionVisionFilosofia/Mision";
 import Recientes from "../../components/ArticulosRecientes/Recientes";
 import ContactUs from "../../components/contact us component/contactUs";
-
+import AdminArticleViewer from "../../components/admin-articles-viewer/admin-articles-viewer";
+import Footer from "../../components/footer/footer";
 
 function Inicio() {
     return (
         <>
-        {/* <Navbar></Navbar> */}
+        <Navbar/>
         <Recientes/>
         <AnunciosContainer/>
         <CardContainer/>
         <ContactUs/>
         <Mision/>
+        <Footer/>
         </>
     )    
 }
