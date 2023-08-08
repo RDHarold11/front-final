@@ -5,7 +5,6 @@ import axios from "axios";
 
 export default function AdminArticleViewer({ className,update }) {
   const [articulos, setArticulos] = useState([]);
-  const [articulosU, setArticulosU] = useState([]);
 
   const fetchArticles = async () => {
     try {
@@ -15,7 +14,9 @@ export default function AdminArticleViewer({ className,update }) {
       setArticulos(response.data);
     } catch (error) {
       console.log(error);
+      setStateError(true)
     }
+    setStateLoad(false);
   };
 
   const updateData =(articulo)=>{
@@ -42,7 +43,7 @@ export default function AdminArticleViewer({ className,update }) {
           </tr>
         </thead>
         <tbody>
-          {articulos?.map((articulo) => (
+          {articulos.length > 0? articulos.map((articulo) => (
             <tr key={articulo._id}>
               <td>{articulo._id}</td>
               <td>{articulo.titulo}</td>
@@ -64,7 +65,7 @@ export default function AdminArticleViewer({ className,update }) {
                 <button className="w-100 btn btn-primary">Eliminar</button>
               </td>
             </tr>
-          ))}
+          )): <tr><td colSpan={6} className="text-center"> {isLoading? "Cargando..." : isError? "Ha ocurrido algo inesperado, trate más tarde" : "No hay articulos agregados"} </td></tr>}
         </tbody>
       </table>
     </div>
