@@ -6,6 +6,7 @@ import axios from "axios";
 export default function AdminArticleViewer({ className }) {
   const [articulos, setArticulos] = useState([]);
   const [isLoading, setStateLoad] = useState(true);
+  const [isError, setStateError] = useState(false);
 
   const fetchArticles = async () => {
     try {
@@ -13,10 +14,11 @@ export default function AdminArticleViewer({ className }) {
         "https://back-api-fofb.onrender.com/api/articles/getArticles"
       );
       setArticulos(response.data);
-      setStateLoad(false);
     } catch (error) {
       console.log(error);
+      setStateError(true)
     }
+    setStateLoad(false);
   };
 
   useEffect(() => {
@@ -58,7 +60,7 @@ export default function AdminArticleViewer({ className }) {
                 <button className="w-100 btn btn-primary">Eliminar</button>
               </td>
             </tr>
-          )): <tr><td colSpan={6} className="text-center"> {isLoading? "Cargando..." :"No hay articulos agregados"} </td></tr>}
+          )): <tr><td colSpan={6} className="text-center"> {isLoading? "Cargando..." : isError? "Ha ocurrido algo inesperado, trate más tarde" : "No hay articulos agregados"} </td></tr>}
         </tbody>
       </table>
     </div>
