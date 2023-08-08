@@ -5,6 +5,7 @@ import axios from "axios";
 
 export default function AdminArticleViewer({ className }) {
   const [articulos, setArticulos] = useState([]);
+  const [isLoading, setStateLoad] = useState(true);
 
   const fetchArticles = async () => {
     try {
@@ -12,6 +13,7 @@ export default function AdminArticleViewer({ className }) {
         "https://back-api-fofb.onrender.com/api/articles/getArticles"
       );
       setArticulos(response.data);
+      setStateLoad(false);
     } catch (error) {
       console.log(error);
     }
@@ -34,7 +36,7 @@ export default function AdminArticleViewer({ className }) {
           </tr>
         </thead>
         <tbody>
-          {articulos?.map((articulo) => (
+          {articulos.length > 0? articulos.map((articulo) => (
             <tr key={articulo._id}>
               <td>{articulo._id}</td>
               <td>{articulo.titulo}</td>
@@ -56,7 +58,7 @@ export default function AdminArticleViewer({ className }) {
                 <button className="w-100 btn btn-primary">Eliminar</button>
               </td>
             </tr>
-          ))}
+          )): <tr><td colSpan={6} className="text-center"> {isLoading? "Cargando..." :"No hay articulos agregados"} </td></tr>}
         </tbody>
       </table>
     </div>
