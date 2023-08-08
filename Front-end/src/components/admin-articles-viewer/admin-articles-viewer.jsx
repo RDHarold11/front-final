@@ -5,6 +5,9 @@ import axios from "axios";
 
 export default function AdminArticleViewer({ className,update }) {
   const [articulos, setArticulos] = useState([]);
+  const [articulosU, setArticulosU] = useState([]);
+  const [isLoading, setStateLoad] = useState(true);
+  const [isError, setStateError] = useState(false);
 
   const fetchArticles = async () => {
     try {
