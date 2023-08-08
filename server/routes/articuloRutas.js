@@ -5,6 +5,9 @@ import protect from "../middleware/authMiddleware.js";
 
 router.route("/").post(protect, controlador.postArticle);
 
-router.route('deletepost/:id').delete(protect, controlador.deleteArticles)
+router.route('deletepost/:id')
+.delete(protect, controlador.deleteArticles)
+
+router.get('/getarticles', controlador.getArticles)
 
 export default router;
