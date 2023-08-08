@@ -1,6 +1,7 @@
 import Articulo from "../modelos/articulosModelo.js";
 import asyncHandler from "express-async-handler";
 
+
 const postArticle = asyncHandler(async (req, res) => {
   const { titulo, descripcionBreve, descripcion, imagen, categoria } = req.body;
 
@@ -35,13 +36,25 @@ const deleteArticles = asyncHandler(async (req, res) => {
   res.status(200).json({ msg: `user deleted` });
 });
 
-const getArticles = () => {
-  console.log("Hello World");
-};
+const getArticles = asyncHandler(() => {
+  const articulos = Articulo.find().lean()
+  try {
+    if (!articulos.length) {
+      res.status(201).json({msg: `no existen registro`})
+    }
+    return res.status(200).json({
+      articulos
+    })
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ msg: `error en la consulta`})
+  }
+});
 
 const controladorUser = {
   postArticle,
   deleteArticles,
+  getArticles
 };
 
 export default controladorUser;
