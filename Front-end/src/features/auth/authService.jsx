@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5500/api/user/login";
+const API_URL = "https://back-api-fofb.onrender.com/api/user/login";
 
 const login = async (data) => {
   try {
