@@ -42,7 +42,7 @@ function Login() {
         {/* Formulario */}
         <div className="" id="img-form">
           <img
-            src="https://images.pexels.com/photos/162622/facebook-login-office-laptop-business-162622.jpeg?auto=compress&cs=tinysrgb&w=600"
+            src="https://img.freepik.com/vector-gratis/concepto-abstracto-sistema-control-acceso_335657-3180.jpg?w=996&t=st=1691506129~exp=1691506729~hmac=fb5e53c16a0c0eee83d7256062aa981a40fcd7c6d9fa2989410613289f8f23c5"
             alt="login"
             className="w-100" 
           />
