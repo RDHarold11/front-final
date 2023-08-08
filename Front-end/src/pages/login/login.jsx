@@ -44,7 +44,7 @@ function Login() {
           <img
             src="https://images.pexels.com/photos/162622/facebook-login-office-laptop-business-162622.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt="login"
-            className="w-100"
+            className="w-100" 
           />
         </div>
         <form
