@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import './articulo.css'
+
 const Articulo = () => {
   return (
     <>

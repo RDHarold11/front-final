@@ -3,8 +3,9 @@ import "./admin-articles-viewer.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function AdminArticleViewer({ className }) {
+export default function AdminArticleViewer({ className,update }) {
   const [articulos, setArticulos] = useState([]);
+  const [articulosU, setArticulosU] = useState([]);
 
   const fetchArticles = async () => {
     try {
@@ -17,8 +18,15 @@ export default function AdminArticleViewer({ className }) {
     }
   };
 
+  const updateData =(articulo)=>{
+    const datos = articulo
+    setArticulosU(datos)
+    update(datos)
+  }
+
   useEffect(() => {
     fetchArticles();
+    
   }, []);
 
   return (
@@ -48,7 +56,7 @@ export default function AdminArticleViewer({ className }) {
                 </Link>
               </td>
               <td>
-                <Link to="#" className="w-100 btn btn-primary">
+                <Link onClick={()=>updateData(articulo)} to="#" className="w-100 btn btn-primary">
                   Editar
                 </Link>
               </td>

@@ -11,7 +11,12 @@ import Filosofia from "./images/Filosofia.jpg"
 
 export default function ImgMediaCard() {
   return (
+    <>
+    <div className="separatorcontainer">
+    <div className="separator"></div>
+    </div>
     <div className='MVVCard-container'>
+      
       <Card className='MVVCard' sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
@@ -68,6 +73,7 @@ export default function ImgMediaCard() {
 
 
     </div>
+    </>
   );
 }
 
