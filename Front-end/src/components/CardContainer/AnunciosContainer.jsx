@@ -41,7 +41,7 @@ function AnunciosContainer() {
       <div className="container">
         <div className="cards d-flex flex-column flex-md-row flex-wrap ">
           {datos.length == 0 ? (
-            <p>No hay eventos agregados</p>
+            <p>No hay información agregada</p>
           ) : (
             datos.map((dato) => (
               <>

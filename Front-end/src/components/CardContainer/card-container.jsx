@@ -1,7 +1,13 @@
 import "./card-container.css";
+import React, {useState} from "react";
 import Card from "../Card/card";
 
+import CardPlaceholder from '../card-placeholder/cardPlaceholder';
+
+
 function CardContainer({ title = "Últimos eventos" }) {
+
+  const [isLoading, setLoadState] = useState(true);
   let relleno =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quibusdam corrupti iusto quam doloribus obcaecati distinctio";
 
@@ -35,30 +41,48 @@ function CardContainer({ title = "Últimos eventos" }) {
       cardId: Math.random() * 101000,
     },
   ];
+
+  setTimeout(() => {
+    setLoadState(false)
+  }, 2500);
+
   return (
     <div className="card-container">
       <h2 className="">{title}</h2>
       <div className="container">
-        <div className="cards d-flex flex-column flex-md-row flex-wrap ">
-          {datos.length == 0 ? (
-            <p>No hay eventos agregados</p>
-          ) : (
-            datos.map((dato) => (
-
-                <Card
-                  title={dato.title}
-                  content={dato.content}
-                  imageUrl={dato.imageUrl}
-                  cardId={dato.cardId}
-                  key={dato.cardId}
-                />
+        <div className="cards d-flex flex-column flex-md-row flex-wrap w-100">
+          {isLoading? 
+              (<>
+                 <CardPlaceholder/>
+                 <CardPlaceholder/>
+                 <CardPlaceholder/>
+                 <CardPlaceholder/>
+              </>) : 
+              datos.length == 0 ? (
+                <div className="py-3 px-5 bg-secondary d-flex align-items-center justify-content-center rounded text-light">
+                  <span> No hay información agregada </span>
+                </div>
+              ) : (
+                datos.map((dato) => (
+                    <Card
+                      title={dato.title}
+                      content={dato.content}
+                      imageUrl={dato.imageUrl}
+                      cardId={dato.cardId}
+                      key={dato.cardId}
+                    />
+                  )
+                )
               )
-            )
-          )}
+          }
         </div>
       </div>
     </div>
   );
+}
+
+let prueba = async (x = () => {}) => {
+  setTimeout(x,700);
 }
 
 export default CardContainer;
