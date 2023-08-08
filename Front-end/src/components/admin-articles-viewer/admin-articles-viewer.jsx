@@ -1,64 +1,22 @@
 import { Link } from "react-router-dom";
 import "./admin-articles-viewer.css";
+import { useState } from "react";
 
 export default function AdminArticleViewer({className}) {
-  let datos = [
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-    {
-      id: Math.floor(Math.random() * 10),
-      titulo: `Prueba#${Math.floor(Math.random() * 10)}`,
-      descripcion: "Lorem ipsum dolor sit, amet consectetur ",
-    },
-  ];
+
+  const [articulos, setArticulos] = useState([])
+
+  const fetchArticles = async()=>{
+    const response = await fetch('https://back-api-fofb.onrender.com/api/articles/getarticles')
+    if (!response) {
+      console.log(response.status)
+    }else if(response){
+      console.log(response.status)
+      const data = await response.json()
+      setArticulos(data)
+      console.log(data)
+    }
+  }
 
   return (
     <div className={"adminViewerContainer " + className}>

@@ -4,6 +4,7 @@ import Footer from "../../components/footer/footer";
 import ArticuloForm from "../../components/ArticuloForm/ArticuloForm"
 
 export default function PanelAdmin() {
+    
     return (<>
         <Navbar/>
         <div className="row mx-auto justify-content-center" style={{width: "90%"}}>
