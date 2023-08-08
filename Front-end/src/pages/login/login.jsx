@@ -6,20 +6,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, reset } from "../../features/auth/authSlice";
 
 function Login() {
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
 
-  const { user, isError, isLoading, isSuccess, message } = useSelector(
+  const { user:username, isError, isLoading, isSuccess, message } = useSelector(
     (state) => state.auth
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
-    if (!username || !password) {
+    e.preventDefault()
+    if (!user || !password) {
       alert("Campos vacios");
     } else {
-      const userData = { username, password };
+      const userData = { user, password };
       dispatch(login(userData));
     }
   };
@@ -28,11 +29,11 @@ function Login() {
     if (isError) {
       console.log(message);
     }
-    if (user) {
+    if (username) {
       navigate("/");
     }
     dispatch(reset());
-  }, [user, dispatch, isError]);
+  }, [username, dispatch, isError]);
   return (
     <>
       <div
@@ -58,8 +59,8 @@ function Login() {
             <label className="form-label" htmlFor="userName"></label>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
               className="form-control"
               id="userName"
               placeholder="Ingrese nombre de usuario"

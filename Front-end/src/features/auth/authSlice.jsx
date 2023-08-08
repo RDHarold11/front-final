@@ -50,8 +50,8 @@ export const authSlice = createSlice({
       })
       .addCase(login.rejected, (state, action) => {
         state.isError = true;
-        state.message = action.payload;
         state.isSuccess = false;
+        state.message = action.payload;
         state.user = null;
       })
       .addCase(logout.fulfilled, (state) => {

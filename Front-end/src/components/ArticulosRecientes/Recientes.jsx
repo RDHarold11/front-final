@@ -20,7 +20,7 @@ const Recientes = () => {
               molestias nisi consequatur eius, eligendi laboriosam enim! Sed
               corporis atque sapiente!
             </p>
-            <button onClick={()=>window.location.href='/detalles/:id'}>Leer mas</button>
+            <button onClick={()=>window.location.href='/detalles/:id'}>Leer más</button>
           </div>
           <hr />
           <div className="second__section">
@@ -37,7 +37,7 @@ const Recientes = () => {
                 similique harum dolorem dolore animi cupiditate esse possimus
                 nemo sed doloribus.
               </p>
-              <button onClick={()=>window.location.href='/detalles/:id'}>Leer mas</button>
+              <button onClick={()=>window.location.href='/detalles/:id'}>Leer más</button>
             </div>
           </div>
         </div>
