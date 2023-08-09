@@ -30,7 +30,6 @@ export default function AdminArticleViewer({ className,update }) {
 
   useEffect(() => {
     fetchArticles();
-    
   }, []);
 
   return (
