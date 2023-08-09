@@ -51,10 +51,45 @@ const getArticles = asyncHandler(() => {
   }
 });
 
+const updateArticle = asyncHandler(async (req, res) => {
+  const { titulo, descripcionBreve, descripcion, imagen, categoria } = req.body;
+  const articleId = req.params.id;
+
+  if (!titulo || !descripcionBreve || !descripcion || !imagen || !categoria) {
+    res.status(400).json({ msg: "Error al actualizar el artículo. Campos incompletos." });
+    return;
+  }
+  
+  try {
+    const updatedArticle = await Articulo.findByIdAndUpdate(
+      articleId,
+      {
+        titulo,
+        descripcionBreve,
+        descripcion,
+        imagen,
+        categoria,
+      },
+      { new: true }
+    );
+
+    if (!updatedArticle) {
+      res.status(404).json({ msg: `No se encontró el artículo con ID: ${articleId}` });
+      return;
+    }
+
+    res.status(200).json(updatedArticle);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Error en la actualización del artículo" });
+  }
+});
+
 const controladorUser = {
   postArticle,
   deleteArticles,
-  getArticles
+  getArticles,
+  updateArticle
 };
 
 export default controladorUser;
