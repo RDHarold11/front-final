@@ -28,43 +28,42 @@ const Navbar = () => {
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        onClick={() => document.querySelector('#navbarSupportedContent').classList.toggle('show')}
       >
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse p-2" id="navbarSupportedContent">
-        <ul className="navbar-nav">
-          <li className="nav-item ms-auto">
+        <ul className="navbar-nav d-flex flex-column align-items-center flex-lg-row">
+          <li className="nav-item my-2 my-lg-0">
             <a className="nav-links" href="/">
               Inicio
             </a>
           </li>
-          <li className="nav-item mx-auto">
+          <li className="nav-item my-2 my-lg-0">
             <a className="nav-links" href="">
               Eventos
             </a>
           </li>
-          <li className="nav-item">
+          <li className="nav-item my-2 my-lg-0">
             <a className="nav-links" href="">
               Anuncios
             </a>
           </li>
+          { !user? 
+            <li className="nav-item my-2 my-lg-0">
+                <Link to="/login">Ingresar</Link>
+            </li> 
+            : 
+            <>
+              <li className="nav-item my-2 my-lg-0">
+                <Link to="panel" className="nav-links">Panel</Link>
+              </li>  
+              <li className="nav-item my-2 my-lg-0">
+                  <Link to="/" className="nav-links" onClick={() => {dispatch(logout())}}>Logout</Link>
+              </li>
+            </>
+          }
         </ul>
-      </div>
-      <div className="d-flex">
-        {user ? (
-          <>
-            <button className="mx-2">
-              <Link to="panel">Panel</Link>
-            </button>
-            <button onClick={() => dispatch(logout())}>
-              <Link to="/">Logout</Link>
-            </button>
-          </>
-        ) : (
-          <button type="submit" className="btn ">
-            <Link to="/login">Ingresar</Link>
-          </button>
-        )}
       </div>
     </nav>
   );
