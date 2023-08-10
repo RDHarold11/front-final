@@ -33,22 +33,25 @@ const Navbar = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse p-2" id="navbarSupportedContent">
-        <ul className="navbar-nav d-flex flex-column align-items-center flex-lg-row">
-          <li className="nav-item my-2 my-lg-0">
-            <a className="nav-links" href="/">
-              Inicio
-            </a>
-          </li>
-          <li className="nav-item my-2 my-lg-0">
-            <a className="nav-links" href="">
-              Eventos
-            </a>
-          </li>
-          <li className="nav-item my-2 my-lg-0">
-            <a className="nav-links" href="">
-              Anuncios
-            </a>
-          </li>
+        <ul className="navbar-nav d-flex flex-column justify-content-lg-between align-items-center flex-lg-row w-100">
+          <div className="d-flex flex-column flex-lg-row">
+            <li className="nav-item my-2 my-lg-0">
+              <a className="nav-links" href="/">
+                Inicio
+              </a>
+            </li>
+            <li className="nav-item my-2 my-lg-0">
+              <a className="nav-links" href="">
+                Eventos
+              </a>
+            </li>
+            <li className="nav-item my-2 my-lg-0">
+              <a className="nav-links" href="">
+                Anuncios
+              </a>
+            </li>
+          </div>
+          <div className="d-flex justify-content-between">
           { !user? 
             <li className="nav-item my-2 my-lg-0">
                 <Link to="/login">Ingresar</Link>
@@ -63,6 +66,7 @@ const Navbar = () => {
               </li>
             </>
           }
+          </div>
         </ul>
       </div>
     </nav>

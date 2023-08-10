@@ -3,16 +3,16 @@ import "./recientes.css";
 
 const Recientes = () => {
   return (
-    <main className="recentsContainer">
+    <div className="recentsContainer">
       <h1 className="titulo">RECIENTES</h1>
-      <section>
+      <section className="w-100">
         <div>
           <img
             src="https://media.istockphoto.com/id/534575873/es/foto/maestra-con-sus-alumnos-en-el-aula.jpg?b=1&s=170667a&w=0&k=20&c=gDg4N-w36VCyF0kE68tfO8VUu6m42ACuYeTSUr4Yi5A="
             alt=""
           />
         </div>
-        <div className="main__container">
+        <div className="main__container w-100">
           <div className="first__section">
             <h2>01. Titulo</h2>
             <p>
@@ -42,7 +42,7 @@ const Recientes = () => {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 

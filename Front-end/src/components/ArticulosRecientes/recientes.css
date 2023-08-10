@@ -1,11 +1,5 @@
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
-main {
-  padding: 30px 60px;
-  margin-top: 50px;
-  height: 80vh;
-}
-
 .titulo{
   font-family: 'Poppins', sans-serif;
   text-align: center;
@@ -13,7 +7,6 @@ main {
 }
 
 section {
-  width: 1300px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 580px 1fr;
@@ -36,7 +29,7 @@ img {
 }
 
 .second__section img {
-  max-width: 300px;
+  max-width: 200px;
 }
 
 .second__section {

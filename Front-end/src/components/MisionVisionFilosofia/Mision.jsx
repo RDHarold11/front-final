@@ -15,7 +15,7 @@ export default function ImgMediaCard() {
     <div className="separatorcontainer">
     <div className="separator"></div>
     </div>
-    <div className='MVVCard-container'>
+    <div className='MVVCard-container mx-auto' style={{width: "90%"}}>
       
       <Card className='MVVCard' sx={{ maxWidth: 345 }}>
         <CardMedia
