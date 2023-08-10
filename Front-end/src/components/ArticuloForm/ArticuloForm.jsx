@@ -1,27 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import "./articuloForm.css";
 
-
-
-const ArticuloForm = ({data}) => {
-
-  const [titulo, setTitulo] = useState('');
-  const [breveDescripcion, setBreveDescripcion] = useState('');
-  const [imagen, setImagen] = useState(null);
-  const [descripcion, setDescripcion] = useState('');
+const ArticuloForm = ({ data }) => {
   const [categoria, setCategoria] = useState('');
-  const [articulo, setArticulo] = useState('');
   
-  const setToupdate =()=>{
-    console.log(data)
-    setArticulo(data)
+  const initialStateValue ={
+    titulo:'',
+    categoria:'',
+    descripcionBreve:'',
+    imagen:'',
+    descripcion:''
   }
-  useEffect(()=>{
-    setToupdate()
-  },[data])
 
-  const handleUpdate = () =>{
+  const [articuloU, setArticuloU] = useState(initialStateValue);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setArticuloU({ ...articuloU, [name]: value });
+  }
+
+  const setToupdate = () => {
+    setArticuloU(data);
+  }
+
+  useEffect(() => {
+    setToupdate();
+  }, [data]);
+
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    console.log(articuloU);
   }
 
   const categorias = [
@@ -36,36 +44,37 @@ const ArticuloForm = ({data}) => {
     <form className='articuloForm'>
       <div>
         <label>Título:</label>
-        <input type="text" value={articulo.titulo} onChange={(e) => setTitulo(e.target.value)} />
+        <input type="text" name='titulo' value={articuloU.titulo} onChange={handleInputChange} />
       </div>
       <div>
-        <label>Categoría:</label>
-        <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
-          <option value="">{!articulo ? 'Seleccionar categoría' : articulo.categoria}</option>
-          {categorias.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
+      <label>Categoría:</label>
+  <select value={articuloU.categoria} onChange={(e) => setArticuloU({ ...articuloU, categoria: e.target.value })}>
+    <option value=''>Seleccionar categoría</option>
+    {categorias.map((cat) => (
+      <option key={cat} value={cat}>
+        {cat}
+      </option>
+    ))}
+  </select>
       </div>
       <div>
         <label>Breve descripción:</label>
         <input
+          name='descripcionBreve'
           type="text"
-          value={articulo.descripcionBreve}
-          onChange={(e) => setBreveDescripcion(e.target.value)}
+          value={articuloU.descripcionBreve}
+          onChange={handleInputChange}
         />
       </div>
       <div>
         <label>Imagen:</label>
-        <input type="file" onChange={(e) => setImagen(e.target.files[0])} />
+        <input name='imagen' type="file" value={articuloU.imagen} onChange={handleInputChange} />
       </div>
       <div>
         <label>Descripción:</label>
-        <textarea value={articulo.descripcion} onChange={(e) => setDescripcion(e.target.value)} />
+        <textarea name='descripcion' value={articuloU.descripcion} onChange={handleInputChange} />
       </div>
-      <button type="submit">{articulo =='' ? 'Enviar' : 'Actualizar'}</button>
+      <button onClick={handleUpdate} type="submit">{Object.values(articuloU).some(value => value !== '') ? 'Actualizar' : 'Enviar'}</button>
     </form>
   );
 };
