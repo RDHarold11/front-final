@@ -23,6 +23,7 @@ const ArticuloForm = ({ data }) => {
   const setToupdate = () => {
     setArticuloU(data);
     setCategoria(data.categoria); // Sincronizar la categoría seleccionada
+    
   };
 
   useEffect(() => {
@@ -36,6 +37,8 @@ const ArticuloForm = ({ data }) => {
       const response = await axios.patch(`https://back-api-fofb.onrender.com/api/articles/${data._id}`, articuloU);
       console.log('Artículo actualizado:', response.data);
       console.log(articuloU)
+      setArticuloU(initialStateValue)
+      setCategoria('')
     } catch (error) {
       console.error('Error al actualizar el artículo:', error);
       console.log(articuloU)
