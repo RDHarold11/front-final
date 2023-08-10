@@ -1,47 +1,95 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import "./articuloForm.css";
+import axios from "axios";
 
-
-
-const ArticuloForm = ({data}) => {
-
-  const [titulo, setTitulo] = useState('');
-  const [breveDescripcion, setBreveDescripcion] = useState('');
+const ArticuloForm = ({ data, idArticulo }) => {
+  const [titulo, setTitulo] = useState("");
+  const [descripcionBreve, setDescripcionBreve] = useState("");
   const [imagen, setImagen] = useState(null);
-  const [descripcion, setDescripcion] = useState('');
-  const [categoria, setCategoria] = useState('');
-  const [articulo, setArticulo] = useState('');
-  
-  const setToupdate =()=>{
-    console.log(data)
-    setArticulo(data)
-  }
-  useEffect(()=>{
-    setToupdate()
-  },[data])
+  const [descripcion, setDescripcion] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const [articulo, setArticulo] = useState("");
+  const [id, setId] = useState(null);
+  const [datos, setDatos] = useState([]);
 
-  const handleUpdate = () =>{
+  const setToupdate = () => {
+    setArticulo(data);
+  };
+  useEffect(() => {
+    setToupdate();
+  }, [data]);
 
-  }
-
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        "https://back-api-fofb.onrender.com/api/articles/getArticles"
+      );
+      setDatos(response.data);
+    };
+    fetchData();
+  }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newArticle = {
+      id,
+      titulo,
+      descripcionBreve,
+      descripcion,
+      categoria,
+      articulo,
+    };
+    if (id) {
+      try {
+        await axios.patch(
+          `https://back-api-fofb.onrender.com/api/articles/${id}`,
+          newArticle
+        );
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        console.log(newArticle);
+        await axios.post("https://back-api-fofb.onrender.com/api/articles", {
+          newArticle,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
   const categorias = [
-    'Categoría 1',
-    'Categoría 2',
-    'Categoría 3',
-    'Categoría 4',
+    "Categoría 1",
+    "Categoría 2",
+    "Categoría 3",
+    "Categoría 4",
     // Agrega aquí más categorías
   ];
 
   return (
-    <form className='articuloForm'>
+    <form onSubmit={handleSubmit} className="articuloForm">
+      <div>
+        <label>Id:</label>
+        <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+      </div>
       <div>
         <label>Título:</label>
-        <input type="text" value={articulo.titulo} onChange={(e) => setTitulo(e.target.value)} />
+        <input
+          type="text"
+          value={titulo}
+          onChange={(e) => setTitulo(e.target.value)}
+        />
       </div>
       <div>
         <label>Categoría:</label>
-        <select value={categoria} onChange={(e) => setCategoria(e.target.value)}>
-          <option value="">{!articulo ? 'Seleccionar categoría' : articulo.categoria}</option>
+        <select
+          value={categoria}
+          onChange={(e) => setCategoria(e.target.value)}
+        >
+          <option value="">
+            {!articulo ? "Seleccionar categoría" : articulo.categoria}
+          </option>
           {categorias.map((cat) => (
             <option key={cat} value={cat}>
               {cat}
@@ -53,8 +101,8 @@ const ArticuloForm = ({data}) => {
         <label>Breve descripción:</label>
         <input
           type="text"
-          value={articulo.descripcionBreve}
-          onChange={(e) => setBreveDescripcion(e.target.value)}
+          value={descripcionBreve}
+          onChange={(e) => setDescripcionBreve(e.target.value)}
         />
       </div>
       <div>
@@ -63,9 +111,12 @@ const ArticuloForm = ({data}) => {
       </div>
       <div>
         <label>Descripción:</label>
-        <textarea value={articulo.descripcion} onChange={(e) => setDescripcion(e.target.value)} />
+        <textarea
+          value={descripcion}
+          onChange={(e) => setDescripcion(e.target.value)}
+        />
       </div>
-      <button type="submit">{articulo =='' ? 'Enviar' : 'Actualizar'}</button>
+      <button type="submit">{id ? "Actualizar" : "Enviar"}</button>
     </form>
   );
 };
