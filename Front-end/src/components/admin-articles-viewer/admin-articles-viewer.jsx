@@ -3,18 +3,11 @@ import "./admin-articles-viewer.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function AdminArticleViewer({
-  className,
-  update,
-  setIdArticle,
-}) {
+export default function AdminArticleViewer({ className, update, setEditando }) {
   const [articulos, setArticulos] = useState([]);
   const [isLoading, setStateLoad] = useState(true);
   const [isError, setStateError] = useState(false);
-
-  const change = (id) => {
-    window.history.pushState(null, null, `/panel?id=${id}`);
-  };
+  const [articuloU, setArticulosU] = useState([]);
 
   const fetchArticles = async () => {
     try {
@@ -28,6 +21,13 @@ export default function AdminArticleViewer({
     }
     setStateLoad(false);
   };
+
+  const updateData = (articulo) => {
+    const datos = articulo;
+    setEditando(true);
+    update(datos);
+  };
+
   useEffect(() => {
     fetchArticles();
   }, []);
@@ -60,13 +60,12 @@ export default function AdminArticleViewer({
                   </Link>
                 </td>
                 <td>
-                  <Link
-                    onClick={() => change(articulo._id)}
-                    to="#"
+                  <button
                     className="w-100 btn btn-primary"
+                    onClick={() => updateData(articulo)}
                   >
                     Editar
-                  </Link>
+                  </button>
                 </td>
                 <td>
                   <button className="w-100 btn btn-primary">Eliminar</button>
