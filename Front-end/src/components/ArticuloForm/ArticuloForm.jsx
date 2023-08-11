@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./articuloForm.css";
 import axios from "axios";
 
-const ArticuloForm = ({ data, idArticulo }) => {
+const ArticuloForm = ({ idArticulo }) => {
   const [titulo, setTitulo] = useState("");
   const [descripcionBreve, setDescripcionBreve] = useState("");
   const [imagen, setImagen] = useState(null);
@@ -11,13 +11,6 @@ const ArticuloForm = ({ data, idArticulo }) => {
   const [articulo, setArticulo] = useState("");
   const [id, setId] = useState(null);
   const [datos, setDatos] = useState([]);
-
-  const setToupdate = () => {
-    setArticulo(data);
-  };
-  useEffect(() => {
-    setToupdate();
-  }, [data]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,8 +21,12 @@ const ArticuloForm = ({ data, idArticulo }) => {
     };
     fetchData();
   }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!titulo || !descripcionBreve || !descripcion || !categoria) {
+      alert("Datos incompletos");
+    }
     const newArticle = {
       id,
       titulo,
@@ -50,10 +47,14 @@ const ArticuloForm = ({ data, idArticulo }) => {
       }
     } else {
       try {
-        console.log(newArticle);
-        await axios.post("https://back-api-fofb.onrender.com/api/articles", {
-          newArticle,
-        });
+        const postArticle = {
+          titulo,
+          descripcionBreve,
+          descripcion,
+          categoria,
+        };
+        await axios.post("http://localhost:5500/api/articles/", postArticle);
+        window.location.reload();
       } catch (error) {
         console.log(error);
       }

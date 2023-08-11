@@ -38,7 +38,7 @@ body {
   min-width: 320px;
   max-width: 100vw;
   min-height: 100vh;
-  background-color: #e3e3e3;
+  background-color: #e6e5e5;
   color: #333;
   box-sizing: border-box;
 }
@@ -80,7 +80,6 @@ button:focus-visible {
   }
 }
 
-
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -95,7 +94,7 @@ button:focus-visible {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--bs-dark);
-  border-radius: 3px ;
+  border-radius: 3px;
 }
 
 /* Handle on hover */

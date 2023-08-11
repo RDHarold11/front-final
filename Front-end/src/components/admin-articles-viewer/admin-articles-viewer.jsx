@@ -9,9 +9,12 @@ export default function AdminArticleViewer({
   setIdArticle,
 }) {
   const [articulos, setArticulos] = useState([]);
-  const [articulosU, setArticulosU] = useState([]);
   const [isLoading, setStateLoad] = useState(true);
   const [isError, setStateError] = useState(false);
+
+  const change = (id) => {
+    window.history.pushState(null, null, `/panel?id=${id}`);
+  };
 
   const fetchArticles = async () => {
     try {
@@ -58,7 +61,7 @@ export default function AdminArticleViewer({
                 </td>
                 <td>
                   <Link
-                    onClick={() => setIdArticle(articulo._id)}
+                    onClick={() => change(articulo._id)}
                     to="#"
                     className="w-100 btn btn-primary"
                   >
