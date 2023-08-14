@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import "./admin-articles-viewer.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {AiFillDelete, AiFillEye, AiFillEdit} from "react-icons/ai"
+
 
 export default function AdminArticleViewer({ className, update, setEditando }) {
   const [articulos, setArticulos] = useState([]);
@@ -21,6 +23,12 @@ export default function AdminArticleViewer({ className, update, setEditando }) {
     }
     setStateLoad(false);
   };
+
+  const handleDelete = () => {
+    if(window.confirm("¿Estas seguro de eliminar este articulo?")){
+      alert("Listo")
+    }
+  }
 
   const updateData = (articulo) => {
     const datos = articulo;
@@ -48,27 +56,27 @@ export default function AdminArticleViewer({ className, update, setEditando }) {
           {articulos.length > 0 ? (
             articulos.map((articulo) => (
               <tr key={articulo._id}>
-                <td>{articulo._id}</td>
-                <td>{articulo.titulo}</td>
-                <td>{articulo.descripcionBreve}</td>
+                <td style={{width: "100px"}}>{articulo._id}</td>
+                <td style={{textAlign: "center"}}>{articulo.titulo}</td>
+                <td style={{textAlign: "center"}}>{articulo.descripcionBreve}</td>
                 <td>
                   <Link
                     to={`/detalles/${articulo.id}`}
-                    className="btn btn-primary d-block mx-auto"
+                    className="btn ver"
                   >
-                    Visualizar
+                    <AiFillEye color="white" size={25}/>
                   </Link>
                 </td>
                 <td>
                   <button
-                    className="w-100 btn btn-primary"
+                    className="w-100 btn editar"
                     onClick={() => updateData(articulo)}
                   >
-                    Editar
+                    <AiFillEdit color="white" size={25}/>
                   </button>
                 </td>
                 <td>
-                  <button className="w-100 btn btn-primary">Eliminar</button>
+                  <button className="w-100 btn eliminar" onClick={handleDelete}><AiFillDelete color="white" size={25}/></button>
                 </td>
               </tr>
             ))

@@ -1,5 +1,6 @@
 import Card from "../Card/card";
-import "./card-container.css"
+import "./card-container.css";
+import { Fade } from "react-awesome-reveal";
 
 function AnunciosContainer() {
   let relleno =
@@ -36,27 +37,29 @@ function AnunciosContainer() {
     },
   ];
   return (
-    <div className="card-container">
-      <h2>Anuncios importantes</h2>
-      <div className="container">
-        <div className="cards d-flex flex-column flex-md-row flex-wrap ">
-          {datos.length == 0 ? (
-            <p>No hay información agregada</p>
-          ) : (
-            datos.map((dato) => (
-              <>
-                <Card
-                  title={dato.title}
-                  content={dato.content}
-                  imageUrl={dato.imageUrl}
-                  cardId={dato.cardId}
-                />
-              </>
-            ))
-          )}
+    <Fade direction="left">
+      <div className="card-container">
+        <h2>Anuncios importantes</h2>
+        <div className="container">
+          <div className="cards d-flex flex-column flex-md-row flex-wrap ">
+            {datos.length == 0 ? (
+              <p>No hay información agregada</p>
+            ) : (
+              datos.map((dato) => (
+                <>
+                  <Card
+                    title={dato.title}
+                    content={dato.content}
+                    imageUrl={dato.imageUrl}
+                    cardId={dato.cardId}
+                  />
+                </>
+              ))
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 }
 
