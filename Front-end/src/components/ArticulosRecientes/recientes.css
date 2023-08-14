@@ -14,14 +14,14 @@
 section {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 580px 1fr;
+  grid-template-columns: 40vw 1fr;
   align-items: flex-start;
   justify-content: center;
 }
 
-img {
+.recentsContainer img {
   border-radius: 3px;
-  max-width: 100%;
+  max-width: 90%;
   object-fit: cover;
 }
 

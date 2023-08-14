@@ -6,7 +6,7 @@ const Recientes = () => {
     <Fade direction="left">
       <div className="recentsContainer">
         <h1 className="titulo">RECIENTES</h1>
-        <section className="w-100">
+        <section className="w-100 px-3">
           <div>
             <img
               src="https://media.istockphoto.com/id/534575873/es/foto/maestra-con-sus-alumnos-en-el-aula.jpg?b=1&s=170667a&w=0&k=20&c=gDg4N-w36VCyF0kE68tfO8VUu6m42ACuYeTSUr4Yi5A="
