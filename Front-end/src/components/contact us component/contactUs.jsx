@@ -25,7 +25,10 @@ const ContactUs = () => {
               <h3>Contacta con nosotros.</h3>
             </div>
 
-            <form action="submit" className="inputContainer">
+            <form className="inputContainer"
+                method="POST"
+                action="https://getform.io/f/cc73dff0-782d-4bac-bf55-39c969402a77"
+              >
               <input
                 className="inputContactus"
                 type="email"
@@ -42,6 +45,7 @@ const ContactUs = () => {
                 value={values.name}
                 onChange={handleChange}
                 placeholder="Full name"
+              required
               />
               <input
                 className="inputContactus"
@@ -50,8 +54,9 @@ const ContactUs = () => {
                 onChange={handleChange}
                 type="text"
                 placeholder="message"
+                required
               />
-              <button className="buttonmContactus" onClick={handleSummit}>
+              <button className="buttonmContactus">
                 ENVIAR
               </button>
             </form>
