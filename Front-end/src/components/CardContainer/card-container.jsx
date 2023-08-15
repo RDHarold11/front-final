@@ -1,5 +1,5 @@
 import "./card-container.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import Card from "../Card/card";
 import { Fade } from "react-awesome-reveal";
 import CardPlaceholder from "../card-placeholder/cardPlaceholder";
