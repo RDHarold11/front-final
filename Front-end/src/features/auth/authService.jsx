@@ -1,4 +1,5 @@
 import axios from "axios";
+import {toast} from "react-toastify"
 
 const API_URL = "https://back-api-fofb.onrender.com/api/users/login";
 
@@ -10,7 +11,7 @@ const login = async (data) => {
       return response.data;
     }
   } catch (error) {
-    console.log(error);
+    toast.error("Credenciales incorrectas")
   }
 };
 

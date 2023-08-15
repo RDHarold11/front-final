@@ -1,48 +1,91 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import "./recientes.css";
+import { Fade } from "react-awesome-reveal";
+import axios from "axios";
+import {Article} from "../CardContainer/card-container"
 
 const Recientes = () => {
+
+  let [primerArticulo, setPrimerArticulo] = useState({})
+  let [segundoArticulo, setsegundoArticulo] = useState({}) 
+
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const response = await axios.get(
+        `https://back-api-fofb.onrender.com/api/articles/getRecentsArticles`
+        );
+        const data = response.data;
+        setPrimerArticulo(new Article(
+          data[0].titulo,
+          data[0].descripcionBreve,
+          data[0].imagen? data[0].imagen : "https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          data[0]._id
+        ));
+  
+        setsegundoArticulo(new Article(
+          data[1].titulo,
+          data[1].descripcionBreve,
+          data[1].imagen? data[1].imagen : "https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          data[1]._id
+        ));
+      }catch (error) {
+        console.log(error);
+        return [{}, {}];
+      } 
+    }
+
+    getData();
+
+  }, [])
+
+  
   return (
-    <div className="recentsContainer">
-      <h1 className="titulo">RECIENTES</h1>
-      <section className="w-100">
-        <div>
-          <img
-            src="https://media.istockphoto.com/id/534575873/es/foto/maestra-con-sus-alumnos-en-el-aula.jpg?b=1&s=170667a&w=0&k=20&c=gDg4N-w36VCyF0kE68tfO8VUu6m42ACuYeTSUr4Yi5A="
-            alt=""
-          />
-        </div>
-        <div className="main__container w-100">
-          <div className="first__section">
-            <h2>01. Titulo</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-              molestias nisi consequatur eius, eligendi laboriosam enim! Sed
-              corporis atque sapiente!
-            </p>
-            <button onClick={()=>window.location.href='/detalles/:id'}>Leer más</button>
+    <Fade direction="left">
+      <div className="recentsContainer">
+        <h1 className="titulo">RECIENTES</h1>
+        <section className="w-100 px-3">
+          <div>
+            <img
+              src={primerArticulo.imageUrl}
+              alt=""
+            />
           </div>
-          <hr />
-          <div className="second__section">
-            <div>
-              <img
-                src="https://cdn.pixabay.com/photo/2015/12/15/06/42/kids-1093758_640.jpg"
-                alt=""
-              />
-            </div>
-            <div>
-              <h2>02. Titulo</h2>
+          <div className="main__container w-100">
+            <div className="first__section">
+              <h2>{primerArticulo.title}</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                similique harum dolorem dolore animi cupiditate esse possimus
-                nemo sed doloribus.
+                {primerArticulo.content}
               </p>
-              <button onClick={()=>window.location.href='/detalles/:id'}>Leer más</button>
+              <button onClick={() => (window.location.href = `/detalles/${primerArticulo.cardId}`)}>
+                Leer más
+              </button>
+            </div>
+            <hr />
+            <div className="second__section">
+              <div>
+                <img
+                  src={segundoArticulo.imageUrl}
+                  alt=""
+                />
+              </div>
+              <div>
+                <h2>{segundoArticulo.title}</h2>
+                <p>
+                  {segundoArticulo.content}
+                </p>
+                <button
+                  onClick={() => (window.location.href = `/detalles/${segundoArticulo.cardId}`)}
+                >
+                  Leer más
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </Fade>
   );
 };
 

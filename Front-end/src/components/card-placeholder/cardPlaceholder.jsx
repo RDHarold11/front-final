@@ -1,6 +1,4 @@
-import React from "react";
 import placeholder from '../../assets/cargandoPlaceholder.png';
-
 
 function CardPlaceholder() {
     

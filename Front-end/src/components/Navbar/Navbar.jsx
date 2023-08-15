@@ -9,7 +9,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
 
   return (
-    <nav className="navbar bg-dark navbar-expand-lg navbar-dark px-3">
+    <nav className="navbar navbar-expand-lg navbar-dark px-3" style={{backgroundColor: "#E74646"}}>
       <img
         src="https://png.pngtree.com/png-clipart/20211017/original/pngtree-school-logo-png-image_6851480.png"
         alt="Logo"
@@ -18,7 +18,7 @@ const Navbar = () => {
         className="d-inline-block align-text-top p-1"
       />
       <a className="navbar-brand" href="/">
-        Escuela Prueba
+        Fe y Alegria
       </a>
       <button
         className="navbar-toggler"
@@ -54,12 +54,12 @@ const Navbar = () => {
           <div className="d-flex justify-content-between">
           { !user? 
             <li className="nav-item my-2 my-lg-0">
-                <Link to="/login">Ingresar</Link>
+                <Link to="/login" className="nav-links">Ingresar</Link>
             </li> 
             : 
             <>
               <li className="nav-item my-2 my-lg-0">
-                <Link to="panel" className="nav-links">Panel</Link>
+                <Link to="/panel" className="nav-links">Panel</Link>
               </li>  
               <li className="nav-item my-2 my-lg-0">
                   <Link to="/" className="nav-links" onClick={() => {dispatch(logout())}}>Logout</Link>

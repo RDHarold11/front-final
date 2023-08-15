@@ -1,7 +1,14 @@
 .card {
   width: 100%;
   margin: 0 auto;
+
+  transition: transform .5s ease;
 }
+
+.card:hover {
+  transform: scale(1.01);
+}
+
 p {
   font-size: 14px;
 }

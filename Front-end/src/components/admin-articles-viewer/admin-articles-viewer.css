@@ -9,6 +9,15 @@
     max-height: 78vh;
   }
 }
+.ver {
+  background-color: #7a9d54 !important;
+}
+.editar {
+  background-color: #0d1282 !important;
+}
+.eliminar {
+  background-color: #c21010 !important;
+}
 
 table.adminViewer {
   text-align: center;
