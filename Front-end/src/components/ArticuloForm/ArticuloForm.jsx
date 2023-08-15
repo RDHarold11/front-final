@@ -4,6 +4,7 @@ import "./articuloForm.css";
 
 
 const ArticuloForm = ({ data }) => {
+  
   const initialStateValue = {
     titulo: "",
     categoria: "",
@@ -23,7 +24,6 @@ const ArticuloForm = ({ data }) => {
   const setToupdate = () => {
     setArticuloU(data);
     setCategoria(data.categoria); // Sincronizar la categoría seleccionada
-    
   };
 
   useEffect(() => {
