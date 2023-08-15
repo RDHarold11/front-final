@@ -25,7 +25,11 @@ const ContactUs = () => {
               <h3>Contacta con nosotros.</h3>
             </div>
 
-            <form action="submit" className="inputContainer">
+            <form className="inputContainer"
+                method="POST"
+                action="https://getform.io/f/cc73dff0-782d-4bac-bf55-39c969402a77"
+                className="flex flex-col max-w-[600px] w-full"
+              >
               <input
                 className="inputContactus"
                 type="email"
