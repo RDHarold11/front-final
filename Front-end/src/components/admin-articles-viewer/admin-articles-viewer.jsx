@@ -24,8 +24,8 @@ export default function AdminArticleViewer({ className, update, setEditando }) {
     setStateLoad(false);
   };
 
-  const handleDelete = () => {
-    if(window.confirm("¿Estas seguro de eliminar este articulo?")){
+  const handleDelete = (id) => {
+    if(window.confirm(`¿Estas seguro de eliminar este articulo ${id}?`)){
       alert("Listo")
     }
   }
@@ -76,7 +76,7 @@ export default function AdminArticleViewer({ className, update, setEditando }) {
                   </button>
                 </td>
                 <td>
-                  <button className="w-100 btn eliminar" onClick={handleDelete}><AiFillDelete color="white" size={25}/></button>
+                  <button className="w-100 btn eliminar" onClick={() => handleDelete(articulo._id)}><AiFillDelete color="white" size={25}/></button>
                 </td>
               </tr>
             ))
