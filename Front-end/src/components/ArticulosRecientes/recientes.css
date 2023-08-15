@@ -21,6 +21,7 @@ section {
 
 .recentsContainer img {
   border-radius: 3px;
+  min-width: 300px;
   max-width: 90%;
   object-fit: cover;
 }

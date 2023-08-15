@@ -15,16 +15,17 @@ function CardContainer({ title = "Últimos eventos", getterData = fetchEvents}) 
 
   let [datos, setDatos] = useState([]);
 
-  getterData().then((data) => {
-    setDatos(data)
-  })
-  .then(() => {
-    setLoadState(false);
-  })
-  .catch((error) => {
-    console.log("El error es:", error)
-  })
-
+  if (isLoading) {
+    getterData().then((data) => {
+      setDatos(data)
+    })
+    .then(() => {
+      setLoadState(false);
+    })
+    .catch((error) => {
+      console.log("El error es:", error)
+    })
+  }
 
   return (
     <Fade direction="left">
@@ -67,8 +68,8 @@ export const fetchEvents = async (type = 'Evento') => {
       `https://back-api-fofb.onrender.com/api/articles/getArticlesBy/${type}`
       );
 
-
       const eventos = []
+ 
       response.data.forEach((evento) => {
         eventos.push(new Article(
           evento.titulo,
@@ -77,9 +78,11 @@ export const fetchEvents = async (type = 'Evento') => {
           evento._id
         ));
       })
+
       return eventos;
   } catch (error) {
       console.log(error);
+      throw error;
   }
 };
 

@@ -15,7 +15,7 @@ export default function Card({ title, content, imageUrl, cardId }) {
           <p className="card-text" style={{ flexGrow: 2 }}>
             {content}
           </p>
-          <Link to="detalles/2" className="btn btn-primary">
+          <Link to={"detalles/" + cardId} className="btn btn-primary">
             Ver más
           </Link>
         </div>
