@@ -61,8 +61,8 @@ export default function AdminArticleViewer({ className, update, setEditando }) {
             articulos.map((articulo) => (
               <tr key={articulo._id}>
                 <td style={{width: "100px"}}>{articulo._id}</td>
-                <td style={{textAlign: "center"}}>{articulo.titulo}</td>
-                <td style={{textAlign: "center"}}>{articulo.descripcionBreve}</td>
+                <td style={{textAlign: "center"}}>{articulo.titulo.length > 15? articulo.titulo.substring(0, 15) + "..." : articulo.titulo}</td>
+                <td style={{textAlign: "center"}}>{articulo.descripcionBreve.length > 15? articulo.descripcionBreve.substring(0, 15) + "...": articulo.descripcionBreve}</td>
                 <td>
                   <Link
                     to={`/detalles/${articulo._id}`}
