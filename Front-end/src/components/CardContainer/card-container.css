@@ -19,3 +19,9 @@ h2::before {
   border: 2px solid #333;
   margin-right: 4px;
 }
+
+.cards {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
