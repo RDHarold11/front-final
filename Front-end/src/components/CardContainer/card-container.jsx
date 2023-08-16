@@ -5,10 +5,11 @@ import { Fade } from "react-awesome-reveal";
 import CardPlaceholder from "../card-placeholder/cardPlaceholder";
 import axios from "axios";
 
-
-
 // GetterData es una funcion asyncrona que retorna un arrelgo de tipo [{}] con objetos de tipo article, clase creada mas abajo
-function CardContainer({ title = "Últimos eventos", getterData = fetchEvents}) {
+function CardContainer({
+  title = "Últimos eventos",
+  getterData = fetchEvents,
+}) {
   const [isLoading, setLoadState] = useState(true);
   let relleno =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quibusdam corrupti iusto quam doloribus obcaecati distinctio";
@@ -16,15 +17,16 @@ function CardContainer({ title = "Últimos eventos", getterData = fetchEvents}) 
   let [datos, setDatos] = useState([]);
 
   if (isLoading) {
-    getterData().then((data) => {
-      setDatos(data)
-    })
-    .then(() => {
-      setLoadState(false);
-    })
-    .catch((error) => {
-      console.log("El error es:", error)
-    })
+    getterData()
+      .then((data) => {
+        setDatos(data);
+      })
+      .then(() => {
+        setLoadState(false);
+      })
+      .catch((error) => {
+        console.log("El error es:", error);
+      });
   }
 
   return (
@@ -62,27 +64,31 @@ function CardContainer({ title = "Últimos eventos", getterData = fetchEvents}) 
   );
 }
 
-export const fetchEvents = async (type = 'Evento') => {
+export const fetchEvents = async (type = "Evento") => {
   try {
-      const response = await axios.get(
+    const response = await axios.get(
       `https://back-api-fofb.onrender.com/api/articles/getArticlesBy/${type}`
-      );
+    );
 
-      const eventos = []
- 
-      response.data.forEach((evento) => {
-        eventos.push(new Article(
+    const eventos = [];
+
+    response.data.forEach((evento) => {
+      eventos.push(
+        new Article(
           evento.titulo,
           evento.descripcion,
-          evento.imagen? evento.imagen: "https://images.pexels.com/photos/3401403/pexels-photo-3401403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          evento.imagen
+            ? evento.imagen
+            : "https://images.pexels.com/photos/3401403/pexels-photo-3401403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           evento._id
-        ));
-      })
+        )
+      );
+    });
 
-      return eventos;
+    return eventos;
   } catch (error) {
-      console.log(error);
-      throw error;
+    console.log(error);
+    throw error;
   }
 };
 
@@ -94,6 +100,5 @@ export class Article {
     this.cardId = cardId;
   }
 }
-
 
 export default CardContainer;

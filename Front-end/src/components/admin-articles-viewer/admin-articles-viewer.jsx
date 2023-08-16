@@ -3,7 +3,7 @@ import "./admin-articles-viewer.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {AiFillDelete, AiFillEye, AiFillEdit} from "react-icons/ai"
-
+import { useNavigate } from "react-router-dom";
 
 export default function AdminArticleViewer({ className, update, setEditando }) {
   const [articulos, setArticulos] = useState([]);
@@ -11,6 +11,7 @@ export default function AdminArticleViewer({ className, update, setEditando }) {
   const [isError, setStateError] = useState(false);
   const [articuloU, setArticulosU] = useState([]);
 
+  const navigate = useNavigate()
   const fetchArticles = async () => {
     try {
       const response = await axios.get(
@@ -24,9 +25,12 @@ export default function AdminArticleViewer({ className, update, setEditando }) {
     setStateLoad(false);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if(window.confirm(`¿Estas seguro de eliminar este articulo ${id}?`)){
-      alert("Listo")
+      const response = await axios.delete(`https://back-api-fofb.onrender.com/api/articles/deletepost/${id}`)
+      if(response.status == 200){
+        navigate(0)
+      }
     }
   }
 
@@ -61,7 +65,7 @@ export default function AdminArticleViewer({ className, update, setEditando }) {
                 <td style={{textAlign: "center"}}>{articulo.descripcionBreve}</td>
                 <td>
                   <Link
-                    to={`/detalles/${articulo.id}`}
+                    to={`/detalles/${articulo._id}`}
                     className="btn ver"
                   >
                     <AiFillEye color="white" size={25}/>

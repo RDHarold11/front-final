@@ -2,10 +2,11 @@ import "./card.css";
 import { Link } from "react-router-dom";
 
 export default function Card({ title, content, imageUrl, cardId }) {
+  const localImg = "https://back-api-fofb.onrender.com/images/";
   return (
     <div className="card m-1">
         <img
-          src={imageUrl}
+          src={localImg + imageUrl}
           className="card-img-top"
           alt="..."
           style={{ objectFit: "cover", height: "150px" }}

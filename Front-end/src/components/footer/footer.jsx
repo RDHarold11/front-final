@@ -15,7 +15,7 @@ const Footer =()=>{
                 <p>PANEL ADMINISTRATIVO</p>
             </div>
             <div className="directionsCopyright">
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                <p>Enterate de las últimas novedades de nuestro centro escolar</p>
                 <p>© 2023 Fe y Alegria. Todos los derechos reservados</p>
             </div>
         </footer>

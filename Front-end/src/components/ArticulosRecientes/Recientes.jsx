@@ -2,45 +2,35 @@ import { useEffect, useState } from "react";
 import "./recientes.css";
 import { Fade } from "react-awesome-reveal";
 import axios from "axios";
-import {Article} from "../CardContainer/card-container"
+import { Article } from "../CardContainer/card-container";
+import { Link } from "react-router-dom";
 
 const Recientes = () => {
-
-  let [primerArticulo, setPrimerArticulo] = useState({})
-  let [segundoArticulo, setsegundoArticulo] = useState({}) 
-
+  const [recentPost, setRecentPost] = useState([]);
 
   useEffect(() => {
     async function getData() {
       try {
         const response = await axios.get(
-        `https://back-api-fofb.onrender.com/api/articles/getRecentsArticles`
+          `https://back-api-fofb.onrender.com/api/articles/getArticles`
         );
-        const data = response.data;
-        setPrimerArticulo(new Article(
-          data[0].titulo,
-          data[0].descripcionBreve,
-          data[0].imagen? data[0].imagen : "https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          data[0]._id
-        ));
-  
-        setsegundoArticulo(new Article(
-          data[1].titulo,
-          data[1].descripcionBreve,
-          data[1].imagen? data[1].imagen : "https://images.pexels.com/photos/3992949/pexels-photo-3992949.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-          data[1]._id
-        ));
-      }catch (error) {
+        const lastIndex = response.data.length - 1;
+        if (lastIndex >= 1) {
+          const lastTwoArticles = [
+            response.data[lastIndex - 1],
+            response.data[lastIndex],
+          ];
+          // Hacer algo con lastTwoArticles (por ejemplo, setearlo en algún estado)
+          setRecentPost(lastTwoArticles); // Asumiendo que tienes un estado para esto
+        }
+      } catch (error) {
         console.log(error);
         return [{}, {}];
-      } 
+      }
     }
-
     getData();
-
-  }, [])
-
-  
+  }, []);
+  const localImg = "https://back-api-fofb.onrender.com/images/";
   return (
     <Fade direction="left">
       <div className="recentsContainer">
@@ -48,38 +38,42 @@ const Recientes = () => {
         <section className="w-100 px-3">
           <div>
             <img
-              src={primerArticulo.imageUrl}
+              src={
+                recentPost[0]?.imagen
+                  ? localImg + recentPost[0].imagen
+                  : "https://img.freepik.com/vector-gratis/fondo-azul-memphis-medios-tonos-elementos-linea_1017-33622.jpg?w=2000&t=st=1690479920~exp=1690480520~hmac=708bb1c3401f3bdc50d9d19faf648f27582bef44f1bba4d04935a6c228bf4551"
+              }
               alt=""
+              style={{ width: "500px" }}
             />
           </div>
           <div className="main__container w-100">
             <div className="first__section">
-              <h2>{primerArticulo.title}</h2>
-              <p>
-                {primerArticulo.content}
-              </p>
-              <button onClick={() => (window.location.href = `/detalles/${primerArticulo.cardId}`)}>
+              <h2>{recentPost[0]?.titulo}</h2>
+              <p>{recentPost[0]?.descripcion}</p>
+              <Link to={`detalles/${recentPost[0]?._id}`} className="btn">
                 Leer más
-              </button>
+              </Link>
             </div>
             <hr />
             <div className="second__section">
               <div>
                 <img
-                  src={segundoArticulo.imageUrl}
+                  src={
+                    recentPost[1]?.imagen
+                      ? localImg + recentPost[1]?.imagen
+                      : "https://img.freepik.com/vector-gratis/fondo-azul-memphis-medios-tonos-elementos-linea_1017-33622.jpg?w=2000&t=st=1690479920~exp=1690480520~hmac=708bb1c3401f3bdc50d9d19faf648f27582bef44f1bba4d04935a6c228bf4551"
+                  }
                   alt=""
+                  style={{ width: "200px" }}
                 />
               </div>
               <div>
-                <h2>{segundoArticulo.title}</h2>
-                <p>
-                  {segundoArticulo.content}
-                </p>
-                <button
-                  onClick={() => (window.location.href = `/detalles/${segundoArticulo.cardId}`)}
-                >
+                <h2>{recentPost[1]?.titulo}</h2>
+                <p>{recentPost[1]?.descripcion}</p>
+                <Link to={`/detalles/${recentPost[1]?._id}`} className="btn">
                   Leer más
-                </button>
+                </Link>
               </div>
             </div>
           </div>
