@@ -1,4 +1,3 @@
-import React from "react";
 import './footer.css'
 
 const Footer =()=>{
@@ -13,11 +12,11 @@ const Footer =()=>{
                 <p>|</p>
                 <p>CONTACTO</p>
                 <p>|</p>
-                <p>PANES ADMINISTRATIVO</p>
+                <p>PANEL ADMINISTRATIVO</p>
             </div>
             <div className="directionsCopyright">
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                <p>© 2023 school admin. Todos los derechos reservados</p>
+                <p>Enterate de las últimas novedades de nuestro centro escolar</p>
+                <p>© 2023 Fe y Alegria. Todos los derechos reservados</p>
             </div>
         </footer>
     )

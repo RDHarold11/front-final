@@ -1,14 +1,26 @@
 /* MVV = MISION, VISION, VALORES */
 
 .MVVCard-container {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-between; 
-  }
-  
- 
-  .MVVCard { 
-    flex: 1; 
-    margin: 10px; 
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.MVVCard {
+  flex: 1;
+  margin: 10px;
+}
+
+.separator {
+  background-color: rgb(194, 189, 189);
+  width: 90vw;
+  height: 1px;
+  margin-bottom: 50px;
+  border-radius: 200px;
+}
+
+.separatorcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,50 +1,56 @@
 import { useEffect, useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { login, reset } from "../../features/auth/authSlice";
 
 function Login() {
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
 
-  const { user, isError, isLoading, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
+  const {
+    user: username,
+    isError,
+    isLoading,
+    isSuccess,
+    message,
+  } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
-    if (!username || !password) {
-      alert("Campos vacios");
+    e.preventDefault();
+    if (!user || !password) {
+      toast.error("Campos vacios");
     } else {
-      const userData = { username, password };
+      const userData = { user, password };
       dispatch(login(userData));
     }
   };
 
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      toast.error("Error");
     }
-    if (user) {
+    if (username) {
       navigate("/");
     }
     dispatch(reset());
-  }, [user, dispatch, isError]);
+  }, [username, dispatch, isError]);
   return (
     <>
+      <ToastContainer />
       <div
         id="Login-window"
-        className="d-flex flex-wrap justify-content-center align-items-md-center"
+        className="d-flex flex-wrap justify-content-center align-items-md-center formulario"
       >
         {/* Formulario */}
         <div className="" id="img-form">
           <img
-            src="https://img.freepik.com/vector-gratis/concepto-abstracto-sistema-control-acceso_335657-3180.jpg?w=996&t=st=1691506129~exp=1691506729~hmac=fb5e53c16a0c0eee83d7256062aa981a40fcd7c6d9fa2989410613289f8f23c5"
+            src="https://cdn.pixabay.com/photo/2015/07/28/22/05/child-865116_1280.jpg"
             alt="login"
-            className="w-100" 
+            className="w-100 img"
           />
         </div>
         <form
@@ -58,8 +64,8 @@ function Login() {
             <label className="form-label" htmlFor="userName"></label>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
               className="form-control"
               id="userName"
               placeholder="Ingrese nombre de usuario"

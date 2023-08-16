@@ -1,18 +1,18 @@
 import CardContainer from "../../components/CardContainer/card-container";
 import Navbar from "../../components/Navbar/Navbar";
-import AnunciosContainer from "../../components/CardContainer/AnunciosContainer"
 import Mision from "../../components/MisionVisionFilosofia/Mision";
 import Recientes from "../../components/ArticulosRecientes/Recientes";
 import ContactUs from "../../components/contact us component/contactUs";
-import AdminArticleViewer from "../../components/admin-articles-viewer/admin-articles-viewer";
 import Footer from "../../components/footer/footer";
+
+import { fetchEvents } from "../../components/CardContainer/card-container";
 
 function Inicio() {
     return (
         <>
         <Navbar/>
         <Recientes/>
-        <AnunciosContainer/>
+        <CardContainer title="Anuncios importantes" getterData={() => fetchEvents('Anuncio')}/>
         <CardContainer/>
         <ContactUs/>
         <Mision/>
@@ -20,5 +20,6 @@ function Inicio() {
         </>
     )    
 }
+
 
 export default Inicio;
