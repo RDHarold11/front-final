@@ -22,7 +22,6 @@ const Articulo = () => {
   useEffect(() => {
     fetchUnique();
   }, []);
-  const localImg = "https://back-api-fofb.onrender.com/images/";
   return (
     <>
       <Navbar />
@@ -30,17 +29,16 @@ const Articulo = () => {
         <div className="auimage">
           <img
             src={
-              article.imagen
-                ? localImg + article.imagen
-                : "https://img.freepik.com/vector-gratis/fondo-azul-memphis-medios-tonos-elementos-linea_1017-33622.jpg?w=2000&t=st=1690479920~exp=1690480520~hmac=708bb1c3401f3bdc50d9d19faf648f27582bef44f1bba4d04935a6c228bf4551"
+              article.imagen ? article.imagen : "https://cdn.pixabay.com/photo/2017/07/31/11/21/people-2557396_1280.jpg"
             }
             alt=""
+            className="last_article__img"
           />
         </div>
         <section className="uaSection">
-          <h1 className="titulounico">{article.titulo}</h1>
-          <h2 className="titulounico">DESCRIPCION</h2>
-          <p>{article.descripcion}</p>
+          <h1 className="titulounico articulo__titulo">{article.titulo}</h1>
+          <h2 className="titulounico">BREVE DESCRIPCION</h2>
+          <p className="description">{article.descripcion}</p>
           <h2 className="titulounico">DIRECTOR</h2>
           <p>ALBERTO SOSA</p>
         </section>

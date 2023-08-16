@@ -36,15 +36,15 @@ const Recientes = () => {
       <div className="recentsContainer">
         <h1 className="titulo">RECIENTES</h1>
         <section className="w-100 px-3">
-          <div>
+          <div className="img-container">
             <img
               src={
                 recentPost[0]?.imagen
-                  ? localImg + recentPost[0]?.imagen
+                  ?  recentPost[0]?.imagen
                   : "https://img.freepik.com/vector-gratis/fondo-azul-memphis-medios-tonos-elementos-linea_1017-33622.jpg?w=2000&t=st=1690479920~exp=1690480520~hmac=708bb1c3401f3bdc50d9d19faf648f27582bef44f1bba4d04935a6c228bf4551"
               }
               alt=""
-              style={{ width: "500px" }}
+              style={{ width: "400px" }}
             />
           </div>
           <div className="main__container w-100">
@@ -61,7 +61,7 @@ const Recientes = () => {
                 <img
                   src={
                     recentPost[1]?.imagen
-                      ? localImg + recentPost[1]?.imagen
+                      ? recentPost[1]?.imagen
                       : "https://img.freepik.com/vector-gratis/fondo-azul-memphis-medios-tonos-elementos-linea_1017-33622.jpg?w=2000&t=st=1690479920~exp=1690480520~hmac=708bb1c3401f3bdc50d9d19faf648f27582bef44f1bba4d04935a6c228bf4551"
                   }
                   alt=""

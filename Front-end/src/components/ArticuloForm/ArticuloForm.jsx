@@ -48,9 +48,21 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
         if (imagen) {
           const dataImg = new FormData();
           const fileName = Date.now() + imagen.name;
-          dataImg.append("name", fileName);
+          /* dataImg.append("name", fileName); */
           dataImg.append("file", imagen);
-          nuevosDatos.imagen = fileName;
+          /*  dataImg.append("file", imagen); */
+          dataImg.append("upload_preset", "images");
+          try {
+            /* await axios.post(
+              "https://back-api-fofb.onrender.com/api/upload",
+              dataImg
+              ); */
+              const res = await axios.post("https://api.cloudinary.com/v1_1/dttkhfrdi/image/upload", dataImg)
+              console.log(res.data.secure_url)
+              nuevosDatos.imagen = res.data.secure_url;
+          } catch (error) {
+            console.log(error);
+          }
           try {
             await axios.patch(
               `https://back-api-fofb.onrender.com/api/articles/${data._id}`,
@@ -60,14 +72,6 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
           } catch (error) {
             console.error("Error al actualizar el artículo:", error);
             console.log(articuloU);
-          }
-          try {
-            await axios.post(
-              "https://back-api-fofb.onrender.com/api/upload",
-              dataImg
-            );
-          } catch (error) {
-            console.log(error);
           }
         } else {
           try {
