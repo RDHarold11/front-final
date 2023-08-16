@@ -17,7 +17,7 @@ const Articulo = () => {
     } else {
       console.log(response.status);
     }
-  };
+  }; 
 
   useEffect(() => {
     fetchUnique();
