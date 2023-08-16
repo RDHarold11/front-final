@@ -76,7 +76,7 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
               articuloU
             );
             if (response.status === 200) {
-              navigate(0);
+              window.location.reload()
             }
           } catch (error) {
             console.error("Error al actualizar el artículo:", error);

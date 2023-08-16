@@ -40,7 +40,7 @@ const Recientes = () => {
             <img
               src={
                 recentPost[0]?.imagen
-                  ? localImg + recentPost[0].imagen
+                  ? localImg + recentPost[0]?.imagen
                   : "https://img.freepik.com/vector-gratis/fondo-azul-memphis-medios-tonos-elementos-linea_1017-33622.jpg?w=2000&t=st=1690479920~exp=1690480520~hmac=708bb1c3401f3bdc50d9d19faf648f27582bef44f1bba4d04935a6c228bf4551"
               }
               alt=""
