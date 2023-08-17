@@ -42,76 +42,82 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
 
   const handleUpdate = async (event) => {
     event.preventDefault();
-    if (editando) {
-      try {
-        const nuevosDatos = {
-          titulo: articuloU.titulo,
-          categoria: articuloU.categoria,
-          descripcionBreve: articuloU.descripcionBreve,
-          descripcion: articuloU.descripcion,
-        };
-        if (imagen) {
-          setCargando(true)
-          const dataImg = new FormData();
-          const fileName = Date.now() + imagen.name;
-          /* dataImg.append("name", fileName); */
-          dataImg.append("file", imagen);
-          /*  dataImg.append("file", imagen); */
-          dataImg.append("upload_preset", "images");
-          try {
-            /* await axios.post(
-              "https://back-api-fofb.onrender.com/api/upload",
-              dataImg
-              ); */
-              const res = await axios.post("https://api.cloudinary.com/v1_1/dttkhfrdi/image/upload", dataImg)
-              console.log(res.data.secure_url)
-              nuevosDatos.imagen = res.data.secure_url;
-              setCargando(false)
-          } catch (error) {
-            console.log(error);
-          }
-          try {
-            await axios.patch(
-              `https://back-api-fofb.onrender.com/api/articles/${data._id}`,
-              nuevosDatos
-            );
-            navigate(0);
-          } catch (error) {
-            console.error("Error al actualizar el artículo:", error);
-            console.log(articuloU);
-          }
-        } else {
-          try {
-            const response = await axios.patch(
-              `https://back-api-fofb.onrender.com/api/articles/${data._id}`,
-              articuloU
-            );
-            if (response.status === 200) {
-              window.location.reload()
+    
+    let tituloValidator = editando? articuloU.titulo : titulo,
+      categoriaValidator = editando? articuloU.categoria : categoria,
+      descripcionBreveValidator = editando? articuloU.descripcionBreve : descripcionBreve,
+      descripcionValidator = editando? articuloU.descripcion:  descripcion;
+
+    if (!tituloValidator || !categoriaValidator || !descripcionBreveValidator || !descripcionValidator) {
+      toast.error("Campos vacios");
+    }else if (!campoEsValido(tituloValidator, 4, 20)) {
+      toast.error("Ajusta el titulo a 4-20 caracteres, por favor.");
+    } else if (!campoEsValido(descripcionBreveValidator, 4, 20)) {
+      toast.error("Ajusta la descripcion breve a 4-20 caracteres, por favor.");
+    } else if (!campoEsValido(descripcionValidator, 20, 300)) {
+      toast.error("Ajusta la descripcion a 20-300 caracteres, por favor.");
+    }else {
+      if (editando) {
+        try {
+          const nuevosDatos = {
+            titulo: articuloU.titulo,
+            categoria: articuloU.categoria,
+            descripcionBreve: articuloU.descripcionBreve,
+            descripcion: articuloU.descripcion,
+          };
+          if (imagen) {
+            setCargando(true)
+            const dataImg = new FormData();
+            const fileName = Date.now() + imagen.name;
+            /* dataImg.append("name", fileName); */
+            dataImg.append("file", imagen);
+            /*  dataImg.append("file", imagen); */
+            dataImg.append("upload_preset", "images");
+            try {
+              /* await axios.post(
+                "https://back-api-fofb.onrender.com/api/upload",
+                dataImg
+                ); */
+                const res = await axios.post("https://api.cloudinary.com/v1_1/dttkhfrdi/image/upload", dataImg)
+                console.log(res.data.secure_url)
+                nuevosDatos.imagen = res.data.secure_url;
+                setCargando(false)
+            } catch (error) {
+              console.log(error);
             }
-          } catch (error) {
-            console.error("Error al actualizar el artículo:", error);
-            console.log(articuloU);
+            try {
+              await axios.patch(
+                `https://back-api-fofb.onrender.com/api/articles/${data._id}`,
+                nuevosDatos
+              );
+              navigate(0);
+            } catch (error) {
+              console.error("Error al actualizar el artículo:", error);
+              console.log(articuloU);
+            }
+          } else {
+            try {
+              const response = await axios.patch(
+                `https://back-api-fofb.onrender.com/api/articles/${data._id}`,
+                articuloU
+              );
+              if (response.status === 200) {
+                window.location.reload()
+              }
+            } catch (error) {
+              console.error("Error al actualizar el artículo:", error);
+              console.log(articuloU);
+            }
           }
+          setArticuloU(initialStateValue);
+          setCategoria("");
+          setEditando(true);
+        } catch (error) {
+          console.error("Error al actualizar el artículo:", error);
+          console.log(articuloU);
         }
-        setArticuloU(initialStateValue);
-        setCategoria("");
-        setEditando(true);
-      } catch (error) {
-        console.error("Error al actualizar el artículo:", error);
-        console.log(articuloU);
-      }
-    } else {
-      try {
-        if (!titulo || !categoria || !descripcionBreve || !descripcion) {
-          toast.error("Campos vacios");
-        }else if (!campoEsValido(titulo, 4, 20)) {
-          toast.error("Ajusta el titulo a 4-20 caracteres, por favor.");
-        } else if (!campoEsValido(descripcionBreve, 4, 20)) {
-          toast.error("Ajusta la descripcion breve a 4-20 caracteres, por favor.");
-        } else if (!campoEsValido(descripcion, 20, 300)) {
-          toast.error("Ajusta la descripcion a 20-300 caracteres, por favor.");
-        } else {
+      } else {
+        try { 
           const newArticle = {
             titulo,
             categoria,
@@ -128,9 +134,10 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
             toast.error("Ocurrio un error");
           }
           setEditando(false);
+        
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
       }
     }
   };
@@ -140,7 +147,7 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
   return (
     <>
       <ToastContainer />
-      <form className="articuloForm">
+      <form className={editando? "articuloForm animacionEditar": "articuloForm"}>
         <div>
           <label>Título:</label>
           <input
