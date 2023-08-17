@@ -54,4 +54,16 @@
     cursor: pointer;
     width: 100%;
   }
+
+  .animacionEditar {
+    animation: animacionEditar 4 .3s linear alternate;
+  }
   
+
+  @keyframes animacionEditar {
+    0% {
+      transform: scale(1);
+    }100% {
+      transform: scale(1.03);
+    }
+  }
