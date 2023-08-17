@@ -11,8 +11,6 @@ function CardContainer({
   getterData = fetchEvents,
 }) {
   const [isLoading, setLoadState] = useState(true);
-  let relleno =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quibusdam corrupti iusto quam doloribus obcaecati distinctio";
 
   let [datos, setDatos] = useState([]);
 
@@ -34,7 +32,7 @@ function CardContainer({
       <div className="card-container">
         <h2 className="">{title}</h2>
         <div className="container">
-          <div className="cards d-flex flex-column flex-md-row flex-wrap w-100">
+          <div className="cards d-flex flex-column align-items-stretch flex-md-row flex-wrap w-100">
             {isLoading ? (
               <>
                 <CardPlaceholder />
@@ -76,7 +74,7 @@ export const fetchEvents = async (type = "Evento") => {
       eventos.push(
         new Article(
           evento.titulo,
-          evento.descripcion,
+          evento.descripcionBreve,
           evento.imagen
             ? evento.imagen
             : "https://images.pexels.com/photos/3401403/pexels-photo-3401403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",

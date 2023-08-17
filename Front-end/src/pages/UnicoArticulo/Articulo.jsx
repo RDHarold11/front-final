@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./articulo.css";
 import { useParams } from "react-router-dom";
+import Footer from "../../components/footer/footer"
 
 const Articulo = () => {
   const { id } = useParams();
@@ -22,32 +23,38 @@ const Articulo = () => {
   useEffect(() => {
     fetchUnique();
   }, []);
-  const localImg = "https://back-api-fofb.onrender.com/images/";
   return (
     <>
       <Navbar />
-      <div className="uacontainer">
+      <div className="uacontainer p-3">
         <div className="auimage">
           <img
             src={
-              article.imagen
-                ? localImg + article.imagen
-                : "https://img.freepik.com/vector-gratis/fondo-azul-memphis-medios-tonos-elementos-linea_1017-33622.jpg?w=2000&t=st=1690479920~exp=1690480520~hmac=708bb1c3401f3bdc50d9d19faf648f27582bef44f1bba4d04935a6c228bf4551"
+              article.imagen ? article.imagen : "https://cdn.pixabay.com/photo/2017/07/31/11/21/people-2557396_1280.jpg"
             }
             alt=""
+            className="last_article__img"
           />
         </div>
-        <section className="uaSection">
-          <h1 className="titulounico">{article.titulo}</h1>
-          <h2 className="titulounico">DESCRIPCION</h2>
-          <p>{article.descripcion}</p>
-          <h2 className="titulounico">DIRECTOR</h2>
-          <p>ALBERTO SOSA</p>
-        </section>
-        <div className="bottomText">
-          <p>{article.descripcionBreve}</p>
+        <div className="columnContainer">
+          <div className="bottomText p-2 my-3">
+            <h2 className="titulounico w-100 mb-3">Resumen</h2>
+
+            <p>{article.descripcionBreve}</p>
+          </div>
+          <div className="bottomText p-2 my-3">
+            <h2 className="titulounico w-100">DIRECTOR</h2>
+            <p>ALBERTO SOSA</p>
+          </div>
+
         </div>
+        <section className="uaSection  rounded px-4 py-2 my-3">
+          <h1 className="titulounico articulo__titulo">{article.titulo}</h1>
+          <h2 className="titulounico w-100">DESCRIPCION</h2>
+          <p className="description">{article.descripcion}</p>
+        </section>
       </div>
+      <Footer/>
     </>
   );
 };

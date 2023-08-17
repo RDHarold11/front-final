@@ -5,6 +5,10 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const ArticuloForm = ({ data, setEditando, editando }) => {
+  // Funcion para validar campos
+  const campoEsValido = (campo = "", min, max) => (campo.length >= min && campo.length <= max)   
+
+
   const initialStateValue = {
     titulo: "",
     categoria: "",
@@ -48,9 +52,21 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
         if (imagen) {
           const dataImg = new FormData();
           const fileName = Date.now() + imagen.name;
-          dataImg.append("name", fileName);
+          /* dataImg.append("name", fileName); */
           dataImg.append("file", imagen);
-          nuevosDatos.imagen = fileName;
+          /*  dataImg.append("file", imagen); */
+          dataImg.append("upload_preset", "images");
+          try {
+            /* await axios.post(
+              "https://back-api-fofb.onrender.com/api/upload",
+              dataImg
+              ); */
+              const res = await axios.post("https://api.cloudinary.com/v1_1/dttkhfrdi/image/upload", dataImg)
+              console.log(res.data.secure_url)
+              nuevosDatos.imagen = res.data.secure_url;
+          } catch (error) {
+            console.log(error);
+          }
           try {
             await axios.patch(
               `https://back-api-fofb.onrender.com/api/articles/${data._id}`,
@@ -60,14 +76,6 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
           } catch (error) {
             console.error("Error al actualizar el artículo:", error);
             console.log(articuloU);
-          }
-          try {
-            await axios.post(
-              "https://back-api-fofb.onrender.com/api/upload",
-              dataImg
-            );
-          } catch (error) {
-            console.log(error);
           }
         } else {
           try {
@@ -94,6 +102,12 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
       try {
         if (!titulo || !categoria || !descripcionBreve || !descripcion) {
           toast.error("Campos vacios");
+        }else if (!campoEsValido(titulo, 4, 20)) {
+          toast.error("Ajusta el titulo a 4-20 caracteres, por favor.");
+        } else if (!campoEsValido(descripcionBreve, 4, 20)) {
+          toast.error("Ajusta la descripcion breve a 4-20 caracteres, por favor.");
+        } else if (!campoEsValido(descripcion, 20, 300)) {
+          toast.error("Ajusta la descripcion a 20-300 caracteres, por favor.");
         } else {
           const newArticle = {
             titulo,
@@ -216,5 +230,6 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
     </>
   );
 };
+
 
 export default ArticuloForm;
