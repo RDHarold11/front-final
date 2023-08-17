@@ -29,7 +29,8 @@ export default function AdminArticleViewer({ className, update, setEditando }) {
     if(window.confirm(`¿Estas seguro de eliminar este articulo ${id}?`)){
       const response = await axios.delete(`https://back-api-fofb.onrender.com/api/articles/deletepost/${id}`)
       if(response.status == 200){
-        window.location.reload()
+        setArticulos(articulos.filter(x => x._id != id))
+        // window.location.reload()
       }
     }
   }
