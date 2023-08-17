@@ -48,7 +48,7 @@ const Recientes = () => {
             />
           </div>
           <div className="main__container w-100">
-            <div className="first__section">
+            <div className="first__section ">
               <h2>{recentPost[0]?.titulo}</h2>
               <p>{recentPost[0]?.descripcion}</p>
               <Link to={`detalles/${recentPost[0]?._id}`} className="btn">
@@ -56,7 +56,7 @@ const Recientes = () => {
               </Link>
             </div>
             <hr />
-            <div className="second__section">
+            <div className="second__section d-flex flex-column flex-md-row">
               <div>
                 <img
                   src={

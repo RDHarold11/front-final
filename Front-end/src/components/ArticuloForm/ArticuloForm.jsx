@@ -5,6 +5,10 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const ArticuloForm = ({ data, setEditando, editando }) => {
+  // Funcion para validar campos
+  const campoEsValido = (campo = "", min, max) => (campo.length >= min && campo.length <= max)   
+
+
   const initialStateValue = {
     titulo: "",
     categoria: "",
@@ -98,6 +102,12 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
       try {
         if (!titulo || !categoria || !descripcionBreve || !descripcion) {
           toast.error("Campos vacios");
+        }else if (!campoEsValido(titulo, 4, 20)) {
+          toast.error("Ajusta el titulo a 4-20 caracteres, por favor.");
+        } else if (!campoEsValido(descripcionBreve, 4, 20)) {
+          toast.error("Ajusta la descripcion breve a 4-20 caracteres, por favor.");
+        } else if (!campoEsValido(descripcion, 20, 300)) {
+          toast.error("Ajusta la descripcion a 20-300 caracteres, por favor.");
         } else {
           const newArticle = {
             titulo,
@@ -220,5 +230,6 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
     </>
   );
 };
+
 
 export default ArticuloForm;

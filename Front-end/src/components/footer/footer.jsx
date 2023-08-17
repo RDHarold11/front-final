@@ -3,7 +3,7 @@ import './footer.css'
 const Footer =()=>{
     return(
         <footer className="footer">
-            <div className="footerOptions">
+            <div className="footerOptions flex-wrap">
                 <p>INICIO</p>
                 <p>|</p>
                 <p>EVENTOS</p>
