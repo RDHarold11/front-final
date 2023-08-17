@@ -29,7 +29,7 @@ function CardContainer({
 
   return (
     <Fade direction="left">
-      <div className="card-container">
+      <div className="card-container" name="anuncios">
         <h2 className="">{title}</h2>
         <div className="container">
           <div className="cards d-flex flex-column align-items-stretch flex-md-row flex-wrap w-100">

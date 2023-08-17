@@ -50,6 +50,7 @@ const Articulo = () => {
         </div>
         <section className="uaSection  rounded px-4 py-2 my-3">
           <h1 className="titulounico articulo__titulo">{article.titulo}</h1>
+          <small>{new Date(article.createdAt).toLocaleString()}</small>
           <h2 className="titulounico w-100">DESCRIPCION</h2>
           <p className="description">{article.descripcion}</p>
         </section>

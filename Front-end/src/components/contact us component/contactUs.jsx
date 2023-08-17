@@ -18,7 +18,7 @@ const ContactUs = () => {
   return (
     <>
       <Fade direction="left">
-        <div className="contactUscontainer">
+        <div className="contactUscontainer" name="contacto">
           <div className="contactUs">
             <div className="titleContact">
               <h1>Contáctanos</h1>
