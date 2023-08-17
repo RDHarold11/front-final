@@ -56,7 +56,7 @@
   }
 
   .animacionEditar {
-    animation: animacionEditar 4 .3s linear alternate;
+    animation: animacionEditar 4 .3s ease-in-out alternate;
   }
   
 
