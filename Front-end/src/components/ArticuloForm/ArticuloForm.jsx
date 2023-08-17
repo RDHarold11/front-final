@@ -24,6 +24,7 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
   const [descripcionBreve, setDescripcionBreve] = useState("");
   const [descripcion, setDescription] = useState("");
   const [imagen, setImagen] = useState(null);
+  const [cargando, setCargando] = useState(false)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -50,6 +51,7 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
           descripcion: articuloU.descripcion,
         };
         if (imagen) {
+          setCargando(true)
           const dataImg = new FormData();
           const fileName = Date.now() + imagen.name;
           /* dataImg.append("name", fileName); */
@@ -64,6 +66,7 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
               const res = await axios.post("https://api.cloudinary.com/v1_1/dttkhfrdi/image/upload", dataImg)
               console.log(res.data.secure_url)
               nuevosDatos.imagen = res.data.secure_url;
+              setCargando(false)
           } catch (error) {
             console.log(error);
           }
@@ -143,6 +146,9 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
           <input
             type="text"
             name="titulo"
+            required
+            min="4"
+            max="20"
             value={articuloU.titulo ? articuloU.titulo : titulo}
             onChange={(e) => {
               setTitulo(e.target.value);
@@ -154,6 +160,8 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
           <label>Categoría:</label>
           <select
             value={categoria}
+            required
+
             onChange={(e) => {
               setCategoria(e.target.value);
               setArticuloU({ ...articuloU, categoria: e.target.value });
@@ -182,6 +190,9 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
           <input
             name="descripcionBreve"
             type="text"
+            required
+            min="4"
+            max="20"
             value={
               articuloU?.descripcionBreve
                 ? articuloU?.descripcionBreve
@@ -214,6 +225,9 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
           <label>Descripción:</label>
           <textarea
             name="descripcion"
+            required
+            min="8"
+            max="200"
             value={
               articuloU?.descripcion ? articuloU?.descripcion : descripcion
             }
@@ -222,6 +236,7 @@ const ArticuloForm = ({ data, setEditando, editando }) => {
               handleInputChange(e);
             }}
           />
+          <p>{cargando ? "Subiendo imagen" : ""}</p>
         </div>
         <button onClick={handleUpdate} type="submit">
           {editando ? "Actualizar" : "Enviar"}
