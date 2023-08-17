@@ -26,7 +26,7 @@ const Articulo = () => {
   return (
     <>
       <Navbar />
-      <div className="uacontainer p-3 align-items-start">
+      <div className="uacontainer p-3">
         <div className="auimage">
           <img
             src={
@@ -36,20 +36,23 @@ const Articulo = () => {
             className="last_article__img"
           />
         </div>
-        <div className="bottomText p-2 my-3">
-          <h2 className="titulounico w-100 mb-3">Resumen</h2>
+        <div className="columnContainer">
+          <div className="bottomText p-2 my-3">
+            <h2 className="titulounico w-100 mb-3">Resumen</h2>
 
-          <p>{article.descripcionBreve}</p>
+            <p>{article.descripcionBreve}</p>
+          </div>
+          <div className="bottomText p-2 my-3">
+            <h2 className="titulounico w-100">DIRECTOR</h2>
+            <p>ALBERTO SOSA</p>
+          </div>
+
         </div>
-        <section className="uaSection rounded px-4 py-2 my-3">
+        <section className="uaSection  rounded px-4 py-2 my-3">
           <h1 className="titulounico articulo__titulo">{article.titulo}</h1>
           <h2 className="titulounico w-100">DESCRIPCION</h2>
           <p className="description">{article.descripcion}</p>
         </section>
-        <div className="bottomText p-2 my-3">
-          <h2 className="titulounico w-100">DIRECTOR</h2>
-          <p>ALBERTO SOSA</p>
-        </div>
       </div>
       <Footer/>
     </>
